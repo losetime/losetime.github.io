@@ -1,107 +1,140 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<meta charset="utf-8" >
+
 <title>真正的生活者 | Hve Notes</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://losetime.github.io">
-  <img class="avatar" src="https://losetime.github.io/images/avatar.png" alt="" width="80px" height="80px">
-  </a>
-  <h1 class="site-title">
-    Hve Notes
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://losetime.github.io">
+        <img class="avatar" src="https://losetime.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://losetime.github.io">
+        <h1 class="site-title">Hve Notes</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              真正的生活者
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-03-17 ·
-              </time>
-              
-                <a href="https://losetime.github.io/tag/TVx1PMLw2" class="post-tags">
-                  # 生活
-                </a>
-              
-            </div>
-            <div class="post-content">
-              <p>我是Lancer，这里是我的个人博客，今天算是正式开业了。</p>
+          <h2 class="post-title">真正的生活者</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-03-17</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://losetime.github.io/tag/TVx1PMLw2">
+                    生活
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>我是Lancer，这里是我的个人博客，今天算是正式开业了。</p>
 <p>做这个的目的有两个，第一是作为一个半吊子程序员，没有自己的博客总是说不过去的。第二就是最近有点太飘了，昨天晚上睡觉的时候觉得这样下去我得玩完，如果我都厌烦现在的自己，别人就更不必说了，今天走在路上的时候想着为这这个新的开始起个什么名字，涅槃重生？太过了，发现更好的自己？太俗了，不过刚才在看书的时候，想起来，不如就叫这个书名吧，真正的生活者，我觉得也可以说是真正的生活着，昨天晚上看一席，文娜说：很多人都说要把每一天都当成世界末日去过，而我是把每一天都当成第一天去过，每天都有新的发现，积极探索未知的东西，我觉得这是大多数人可望不可及的生活状态，当然包括我。所以，我不敢说能把每一天当成第一天，至少每一天都可以被我记住，致以后的日子。</p>
 <p>今天抽了两根烟，看了一小时书，小跑了一会步，把安卓虚拟机终于搞定，应该会在十二点左右睡觉。不过说起看书，好像除了初中好好看过一些书，后来看过村上的两本书，然后就再也没有沉下心过，不过今天看书觉得感觉很不错，老舍把生活写的很有味道。</p>
 <p>加油。</p>
 
-            </div>
-          </article>
+          </div>
         </div>
-    
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://losetime.github.io/post/wo-de-bo-ke">
-              <h3 class="post-title">
-                我的博客
-              </h3>
-            </a>
-          </div>  
-        
 
         
-    
-        <div class="site-footer">
+          <div class="next-post">
+            <a class="purple-link" href="https://losetime.github.io/post/wo-de-bo-ke">
+              <h3 class="post-title">
+                下一篇：我的博客
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
   Powered by Hve Notes
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
