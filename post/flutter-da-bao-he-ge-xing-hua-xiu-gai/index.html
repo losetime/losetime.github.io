@@ -104,7 +104,7 @@ storeFile=my-release-key.keystore（命令生成的文件名）</code></pre></li
 <pre><code>def keystorePropertiesFile = rootProject.file(&quot;key.properties&quot;)
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))</code></pre></li>
-<li><p>把代码</p>
+<li><p>在该文件中代码</p>
 <pre><code>buildTypes {
  release {
      // TODO: Add your own signing config for the release build.
@@ -127,14 +127,14 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))</code></pre
          signingConfig signingConfigs.release
      }
  }</code></pre></li>
-<li><p>在项目根目录下运行flutter run apk</p>
-</li>
 <li><p>修改app名称和图标</p>
 <pre><code> 8.1 修改APP名称
  在【\android\app\src\main】找到AndroidManifest文件， android:label=【项目名称】
  8.2 修改图标
  生成图标地址：https://icon.wuruihong.com/
  替换：找到【\android\app\src\main\res】，替换下面的图片文件即可</code></pre></li>
+<li><p>在项目根目录下运行flutter run apk</p>
+</li>
 </ol>
 
             </div>
