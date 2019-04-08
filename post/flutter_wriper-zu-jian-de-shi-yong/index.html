@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>flutter_wriper组件的使用 | losetime</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico">
+<link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://losetime.github.io">
+        <img src="https://losetime.github.io/images/avatar.png" class="site-logo">
+        <h1 class="site-title">losetime</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by Hve Notes
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">flutter_wriper组件的使用</h2>
+            <div class="post-date">2019-04-08</div>
+            
+            <div class="post-content">
+              <p>import &#39;package:flutter/material.dart&#39;;<br>import &#39;package:flutter_swiper/flutter_swiper.dart&#39;;<br>class Home extends StatelessWidget{<br>  @override<br>  Widget build(BuildContext context) {<br>    return new MaterialApp(<br>      title: &#39;首页&#39;,<br>      theme: new ThemeData(<br>        primarySwatch: Colors.blue,<br>      ),<br>      home: new MyHomePage(title: &#39;首页&#39;),<br>    );<br>  }<br>}</p>
+<p>class MyHomePage extends StatefulWidget {<br>  MyHomePage({Key key, this.title}) : super(key: key);</p>
+<p>  final String title;</p>
+<p>  @override<br>  _MyHomePageState createState() =&gt; new _MyHomePageState();<br>}</p>
+<p>class _MyHomePageState extends State<MyHomePage> {<br>  List<Widget> imageList = List();</p>
+<p>  @override<br>  void initState() {<br>    imageList<br>    ..add(Image.network(<br>      &#39;<a href="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg&#39;">https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ))<br>    ..add(Image.network(<br>      &#39;<a href="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg&#39;">https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ))<br>    ..add(Image.network(<br>      &#39;<a href="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg&#39;">https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ))<br>    ..add(Image.network(<br>      &#39;<a href="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg&#39;">https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ));<br>    super.initState();<br>  }</p>
+<p>  @override<br>  Widget build(BuildContext context) {<br>    return Scaffold(<br>      appBar: new AppBar(<br>        title: new Text(widget.title),<br>      ),<br>      body: ListView(<br>        children: <Widget>[<br>          firstSwiperView()<br>        ],<br>      )<br>    );<br>  }<br>  Widget firstSwiperView(){<br>    return Container(<br>      // padding: const EdgeInsets.fromLTRB(0, 50, 0, 5),<br>      width: MediaQuery.of(context).size.width,<br>      height: 150,<br>      child: Swiper(<br>        itemCount: 4,<br>        itemBuilder: _swiperBuilder,<br>        pagination: SwiperPagination(<br>            alignment: Alignment.bottomRight,<br>            // margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),<br>            builder: DotSwiperPaginationBuilder(<br>                color: Colors.black54,<br>                activeColor: Colors.white<br>            )<br>        ),<br>        controller: SwiperController(),<br>        scrollDirection: Axis.horizontal,<br>        autoplay: true,<br>        onTap: (index) =&gt; print(&#39;点击了第$index&#39;),<br>      ),<br>    );<br>  }</p>
+<p>  Widget _swiperBuilder(BuildContext context, int index){<br>    return (imageList[index]);<br>  }<br>}</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://losetime.github.io/post/flutter-tong-yong-mo-kuai">
+                  <h3 class="post-title">
+                    Flutter 通用模块
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
