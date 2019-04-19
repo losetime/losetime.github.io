@@ -8,21 +8,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555665073977">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 
 
   </head>
@@ -33,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://losetime.github.io">
-        <img src="https://losetime.github.io/images/avatar.png" class="site-logo">
+        <img src="https://losetime.github.io/images/avatar.png?v=1555665073977" class="site-logo">
         <h1 class="site-title">losetime</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -69,6 +65,23 @@
     </div>
   </div>
   <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/losetime" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
     <div class="site-description">
       温故而知新
     </div>
@@ -86,14 +99,89 @@
             <div class="post-date">2019-04-08</div>
             
             <div class="post-content">
-              <p>import &#39;package:flutter/material.dart&#39;;<br>import &#39;package:flutter_swiper/flutter_swiper.dart&#39;;<br>class Home extends StatelessWidget{<br>  @override<br>  Widget build(BuildContext context) {<br>    return new MaterialApp(<br>      title: &#39;首页&#39;,<br>      theme: new ThemeData(<br>        primarySwatch: Colors.blue,<br>      ),<br>      home: new MyHomePage(title: &#39;首页&#39;),<br>    );<br>  }<br>}</p>
-<p>class MyHomePage extends StatefulWidget {<br>  MyHomePage({Key key, this.title}) : super(key: key);</p>
-<p>  final String title;</p>
-<p>  @override<br>  _MyHomePageState createState() =&gt; new _MyHomePageState();<br>}</p>
-<p>class _MyHomePageState extends State<MyHomePage> {<br>  List<Widget> imageList = List();</p>
-<p>  @override<br>  void initState() {<br>    imageList<br>    ..add(Image.network(<br>      &#39;<a href="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg&#39;">https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ))<br>    ..add(Image.network(<br>      &#39;<a href="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg&#39;">https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ))<br>    ..add(Image.network(<br>      &#39;<a href="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg&#39;">https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ))<br>    ..add(Image.network(<br>      &#39;<a href="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg&#39;">https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg&#39;</a>,<br>      fit: BoxFit.fill,<br>    ));<br>    super.initState();<br>  }</p>
-<p>  @override<br>  Widget build(BuildContext context) {<br>    return Scaffold(<br>      appBar: new AppBar(<br>        title: new Text(widget.title),<br>      ),<br>      body: ListView(<br>        children: <Widget>[<br>          firstSwiperView()<br>        ],<br>      )<br>    );<br>  }<br>  Widget firstSwiperView(){<br>    return Container(<br>      // padding: const EdgeInsets.fromLTRB(0, 50, 0, 5),<br>      width: MediaQuery.of(context).size.width,<br>      height: 150,<br>      child: Swiper(<br>        itemCount: 4,<br>        itemBuilder: _swiperBuilder,<br>        pagination: SwiperPagination(<br>            alignment: Alignment.bottomRight,<br>            // margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),<br>            builder: DotSwiperPaginationBuilder(<br>                color: Colors.black54,<br>                activeColor: Colors.white<br>            )<br>        ),<br>        controller: SwiperController(),<br>        scrollDirection: Axis.horizontal,<br>        autoplay: true,<br>        onTap: (index) =&gt; print(&#39;点击了第$index&#39;),<br>      ),<br>    );<br>  }</p>
-<p>  Widget _swiperBuilder(BuildContext context, int index){<br>    return (imageList[index]);<br>  }<br>}</p>
+              <p>import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+class Home extends StatelessWidget{
+@override
+Widget build(BuildContext context) {
+return new MaterialApp(
+title: '首页',
+theme: new ThemeData(
+primarySwatch: Colors.blue,
+),
+home: new MyHomePage(title: '首页'),
+);
+}
+}</p>
+<p>class MyHomePage extends StatefulWidget {
+MyHomePage({Key key, this.title}) : super(key: key);</p>
+<p>final String title;</p>
+<p>@override
+_MyHomePageState createState() =&gt; new _MyHomePageState();
+}</p>
+<p>class _MyHomePageState extends State<MyHomePage> {
+List<Widget> imageList = List();</p>
+<p>@override
+void initState() {
+imageList
+..add(Image.network(
+'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg',
+fit: BoxFit.fill,
+))
+..add(Image.network(
+'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg',
+fit: BoxFit.fill,
+))
+..add(Image.network(
+'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg',
+fit: BoxFit.fill,
+))
+..add(Image.network(
+'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg',
+fit: BoxFit.fill,
+));
+super.initState();
+}</p>
+<p>@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: new AppBar(
+title: new Text(widget.title),
+),
+body: ListView(
+children: <Widget>[
+firstSwiperView()
+],
+)
+);
+}
+Widget firstSwiperView(){
+return Container(
+// padding: const EdgeInsets.fromLTRB(0, 50, 0, 5),
+width: MediaQuery.of(context).size.width,
+height: 150,
+child: Swiper(
+itemCount: 4,
+itemBuilder: _swiperBuilder,
+pagination: SwiperPagination(
+alignment: Alignment.bottomRight,
+// margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
+builder: DotSwiperPaginationBuilder(
+color: Colors.black54,
+activeColor: Colors.white
+)
+),
+controller: SwiperController(),
+scrollDirection: Axis.horizontal,
+autoplay: true,
+onTap: (index) =&gt; print('点击了第$index'),
+),
+);
+}</p>
+<p>Widget _swiperBuilder(BuildContext context, int index){
+return (imageList[index]);
+}
+}</p>
 
             </div>
             
@@ -116,12 +204,6 @@
               </div>
             
 
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
-
-              
             
 
           </div>
@@ -146,29 +228,6 @@ var app = new Vue({
 })
 
 </script>
-
-
-  
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-
-      var gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: '',
-        owner: '',
-        admin: [''],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
 
 
 
