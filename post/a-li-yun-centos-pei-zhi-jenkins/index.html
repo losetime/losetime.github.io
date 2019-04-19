@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555666729892">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555667566695">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://losetime.github.io">
-        <img src="https://losetime.github.io/images/avatar.png?v=1555666729892" class="site-logo">
+        <img src="https://losetime.github.io/images/avatar.png?v=1555667566695" class="site-logo">
         <h1 class="site-title">losetime</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -116,10 +116,13 @@ Jenkins目录、端口、工作目录等信息在： /etc/sysconfig/jenkins
 </code></pre>
 <p>注意：</p>
 <ul>
-<li>要安装java
-<code>yum install java-1.8.0-openjdk</code></li>
+<li>要安装java</li>
+</ul>
+<pre><code>yum install java-1.8.0-openjdk
+</code></pre>
+<ul>
 <li>阿里云的安全组规则，千万要记得把阿里云的安全组规则里加上自己要访问的端口
-图片: https://uploader.shimo.im/f/y6aKjRwZNTwIjkLu.png</li>
+<img src="https://losetime.github.io/post-images/1555667114420.png" alt=""></li>
 <li>防火墙问题</li>
 </ul>
 <pre><code>cat   /var/log/jenkins/jenkins.log #查看安装日志安装没有问题
@@ -137,25 +140,27 @@ JENKINS_PORT=&quot;8080&quot;  此端口不冲突可以不修改
 <code>service jenkins start/stop/restart</code></li>
 <li>生成Personal Access Token
 进入github --&gt; setting --&gt;developers--&gt; Personal Access Token --&gt; Generate new token, 新建一个有读写权限的用户
-图片: https://uploader.shimo.im/f/COwF2L7Tmf4n134Y.png</li>
-</ol>
-<p>新增一个描述，勾选如图配置，点击生成对应的 token</p>
-<p>图片: https://uploader.shimo.im/f/Za6Z7xOzmmAWZl9T.png
-github 设置GitHub webhooks
+<img src="https://losetime.github.io/post-images/1555667272755.png" alt="">
+新增一个描述，勾选如图配置，点击生成对应的 token
+<img src="https://losetime.github.io/post-images/1555667331338.png" alt=""></li>
+<li>github 设置GitHub webhooks
 新建或者设置现有项目的webhooks选项，url：你之前部署jenkins的服务器的IP+端口+ github-webhook,填写完成确认添加。
-图片: https://uploader.shimo.im/f/srP6Uv62ayghWS8X.png
-设置jenkins的全局github配置
+<img src="https://losetime.github.io/post-images/1555667368433.png" alt=""></li>
+<li>设置jenkins的全局github配置
 jenkins 安装Github Plugin插件,因为我们在配置jenkins的时候已经安装了所以这里可跳过， 如果没有 key 在jenkins 系统管理--&gt;插件管理--&gt;可选插件中安装。
 jenkins 系统管理 --&gt; 系统设置 --&gt; GitHub --&gt; Add GitHub Sever,设置一下jenkins关联 GitHub。
-注意：这里需要使用上面生成的令牌，使用用户名和密码不起作用，设置后选项内不会出现，已经验证过。
-图片: https://uploader.shimo.im/f/qJXQaVELXlMm7Zwb.png</p>
-<p>按照如下图选择添加配置，这个时候就需要用到了我们第一步生成的 GitHub Personal Access Token，填写完毕确认添加
-图片: https://uploader.shimo.im/f/KWwGDyshjlck6IKa.png
+<strong>注意：这里需要使用上面生成的令牌，使用用户名和密码不起作用，设置后选项内不会出现，已经验证过。</strong>
+<img src="https://losetime.github.io/post-images/1555667469439.png" alt="">
+按照如下图选择添加配置，这个时候就需要用到了我们第一步生成的 GitHub Personal Access Token，填写完毕确认添加
+<img src="https://losetime.github.io/post-images/1555667506907.png" alt="">
 选择生成的凭证，测试jenkins连接github服务器,如下图说明一切都配置 ok，最后记得在页面底部保存配置
-图片: https://uploader.shimo.im/f/vamlMnOVJ8oc28RA.png
-jenkins的项目配置
-jenkins 新建项目，选择构建自由风格项目
-图片: https://uploader.shimo.im/f/siDRRlpqhqA0l0UJ.png</p>
+<img src="https://losetime.github.io/post-images/1555667535586.png" alt=""></li>
+<li>jenkins的项目配置</li>
+</ol>
+<ul>
+<li>jenkins 新建项目，选择构建自由风格项目
+图片: https://uploader.shimo.im/f/siDRRlpqhqA0l0UJ.png</li>
+</ul>
 <p>完成之后的页面如下，后面我们做关于项目的配置设置都是基于这样页面（后面可以在项目=&gt;配置中找到这个页面）
 图片: https://uploader.shimo.im/f/CcM3xN9XNXUpUEZJ.png</p>
 <p>GitHub 项目
