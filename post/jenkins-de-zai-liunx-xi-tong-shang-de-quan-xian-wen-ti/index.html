@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>CentOS安装Node.js | losetime</title>
+<title>Jenkins的在Liunx系统上的权限问题 | losetime</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -95,53 +95,50 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">CentOS安装Node.js</h2>
+            <h2 class="post-title">Jenkins的在Liunx系统上的权限问题</h2>
             <div class="post-date">2019-04-19</div>
             
             <div class="post-content">
-              <p>Yum 自带 Node版本，但是版本太老了，是V6版本的，所以我们需要重新安装。</p>
-<ol>
-<li>二进制安装方法，右击复制二进制文件链接地址
-<img src="https://losetime.github.io/post-images/1555663662014.png" alt=""></li>
-<li>使用wget下载压缩文件，使用tar命令解压</li>
-</ol>
-<pre><code>wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
-tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）
-</code></pre>
-<ol start="3">
-<li>配置环境变量</li>
-</ol>
+              <p>由于Jenkins在安装的时候，会自动创建一个名为jenkins的普通账号，这个账号没有管理员权限。jenkins执行命令的时候，它也会使用这个账号。但是由于nginx这个文件夹是用户root创建的，所以jenkins账号默认是没有权限读写这个文件夹的。所以导致构建的项目总是在复制的时候失败。</p>
+<h3 id="下来以centos系统为例修改jenkins配置文件">下来以centOS系统为例，修改Jenkins配置文件。</h3>
 <ul>
-<li>第一种方法</li>
+<li>打开配置文件</li>
 </ul>
-<pre><code>vim ~/.bashrc   //打开文件
-export PATH=/root/node-v10.15.3-linux-x64/bin:$PATH  //添加PATH路径
-source ~/.bashrc  //刷新文件
+<pre><code>vim /etc/sysconfig/jenkins
 </code></pre>
 <ul>
-<li>第二种方法（添加软连接将安装目录链接到全局）</li>
+<li>修改$JENKINS_USER</li>
 </ul>
-<pre><code>ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node  
-ln -s /root/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm  
-ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx
+<pre><code>$JENKINS_USER=&quot;root&quot;
 </code></pre>
+<ul>
+<li>修改Jenkins相关文件夹用户权限</li>
+</ul>
+<pre><code>chown -R root:root /var/lib/jenkins
+chown -R root:root /var/cache/jenkins
+chown -R root:root /var/log/jenkins
+</code></pre>
+<ul>
+<li>重启Jenkins服务并检查运行Jenkins的用户是否已经切换为root</li>
+</ul>
+<pre><code>service jenkins restart
+</code></pre>
+<ul>
+<li>查看Jenkins进程所属用户</li>
+</ul>
+<pre><code>ps -ef | grep jenkins
+</code></pre>
+<h3 id="若显示为root用户则表示修改完成">若显示为root用户，则表示修改完成</h3>
+<p><img src="https://losetime.github.io/post-images/1555669015905.png" alt=""></p>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://losetime.github.io/tag/after_end" class="tag">
-                    后端
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-nigux">
+                <a href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-jenkins">
                   <h3 class="post-title">
-                    阿里云CentOS配置Nigux
+                    阿里云CentOS配置Jenkins
                   </h3>
                 </a>
               </div>
