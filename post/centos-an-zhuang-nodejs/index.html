@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" >
 
-<title>centOS安装node.js | losetime</title>
+<title>CentOS安装Node.js | losetime</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555665073977">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555665648814">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://losetime.github.io">
-        <img src="https://losetime.github.io/images/avatar.png?v=1555665073977" class="site-logo">
+        <img src="https://losetime.github.io/images/avatar.png?v=1555665648814" class="site-logo">
         <h1 class="site-title">losetime</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -95,7 +95,7 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">centOS安装node.js</h2>
+            <h2 class="post-title">CentOS安装Node.js</h2>
             <div class="post-date">2019-04-19</div>
             
             <div class="post-content">
@@ -103,19 +103,28 @@
 <ol>
 <li>二进制安装方法，右击复制二进制文件链接地址
 <img src="https://losetime.github.io/post-images/1555663662014.png" alt=""></li>
-<li>使用wget下载压缩文件，使用tar命令解压
-wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
-tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）</li>
-<li>配置环境变量
-第一种方法
-vim ~/.bashrc   //打开文件
+<li>使用wget下载压缩文件，使用tar命令解压</li>
+</ol>
+<pre><code>wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
+tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）
+</code></pre>
+<ol start="3">
+<li>配置环境变量</li>
+</ol>
+<ul>
+<li>第一种方法</li>
+</ul>
+<pre><code>vim ~/.bashrc   //打开文件
 export PATH=/root/node-v10.15.3-linux-x64/bin:$PATH  //添加PATH路径
 source ~/.bashrc  //刷新文件
-第二种方法（添加软连接将安装目录链接到全局）
-ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node<br>
-ln -s /root/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm<br>
-ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx</li>
-</ol>
+</code></pre>
+<ul>
+<li>第二种方法（添加软连接将安装目录链接到全局）</li>
+</ul>
+<pre><code>ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node  
+ln -s /root/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm  
+ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx
+</code></pre>
 
             </div>
             
@@ -132,7 +141,7 @@ ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx</li>
                 <div class="next">下一篇</div>
                 <a href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-nigux">
                   <h3 class="post-title">
-                    阿里云centOS配置Nigux
+                    阿里云CentOS配置Nigux
                   </h3>
                 </a>
               </div>
