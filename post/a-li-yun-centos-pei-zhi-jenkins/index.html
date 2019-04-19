@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555667566695">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1555668805166">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://losetime.github.io">
-        <img src="https://losetime.github.io/images/avatar.png?v=1555667566695" class="site-logo">
+        <img src="https://losetime.github.io/images/avatar.png?v=1555668805166" class="site-logo">
         <h1 class="site-title">losetime</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -99,9 +99,7 @@
             <div class="post-date">2019-04-19</div>
             
             <div class="post-content">
-              <ol>
-<li>下载jenkins</li>
-</ol>
+              <h2 id="1-下载jenkins">1. 下载jenkins</h2>
 <pre><code>#下载Jenkins库
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 #导入key
@@ -128,52 +126,49 @@ Jenkins目录、端口、工作目录等信息在： /etc/sysconfig/jenkins
 <pre><code>cat   /var/log/jenkins/jenkins.log #查看安装日志安装没有问题
 firewall-cmd --add-port=8080/tcp #将设置的端口防火墙关闭
 </code></pre>
-<ol start="2">
-<li>配置jenkis的端口</li>
-</ol>
+<h2 id="2-配置jenkis的端口">2. 配置jenkis的端口</h2>
 <pre><code>vi /etc/sysconfig/jenkins
 找到修改端口号：
 JENKINS_PORT=&quot;8080&quot;  此端口不冲突可以不修改 
 </code></pre>
-<ol start="3">
-<li>启动jenkins
-<code>service jenkins start/stop/restart</code></li>
-<li>生成Personal Access Token
-进入github --&gt; setting --&gt;developers--&gt; Personal Access Token --&gt; Generate new token, 新建一个有读写权限的用户
+<h2 id="3-启动jenkins">3. 启动jenkins</h2>
+<pre><code>service jenkins start/stop/restart
+</code></pre>
+<h2 id="4-生成personal-access-token">4. 生成Personal Access Token</h2>
+<p>进入github --&gt; setting --&gt;developers--&gt; Personal Access Token --&gt; Generate new token, 新建一个有读写权限的用户
 <img src="https://losetime.github.io/post-images/1555667272755.png" alt="">
 新增一个描述，勾选如图配置，点击生成对应的 token
-<img src="https://losetime.github.io/post-images/1555667331338.png" alt=""></li>
-<li>github 设置GitHub webhooks
-新建或者设置现有项目的webhooks选项，url：你之前部署jenkins的服务器的IP+端口+ github-webhook,填写完成确认添加。
-<img src="https://losetime.github.io/post-images/1555667368433.png" alt=""></li>
-<li>设置jenkins的全局github配置
-jenkins 安装Github Plugin插件,因为我们在配置jenkins的时候已经安装了所以这里可跳过， 如果没有 key 在jenkins 系统管理--&gt;插件管理--&gt;可选插件中安装。
+<img src="https://losetime.github.io/post-images/1555667331338.png" alt=""></p>
+<h2 id="5-设置github-webhooks">5. 设置GitHub Webhooks</h2>
+<p>新建或者设置现有项目的webhooks选项，url：你之前部署jenkins的服务器的IP+端口+ github-webhook,填写完成确认添加。
+<img src="https://losetime.github.io/post-images/1555667368433.png" alt=""></p>
+<h2 id="6-设置jenkins的全局github配置">6. 设置Jenkins的全局Github配置</h2>
+<p>jenkins 安装Github Plugin插件,因为我们在配置jenkins的时候已经安装了所以这里可跳过， 如果没有 key 在jenkins 系统管理--&gt;插件管理--&gt;可选插件中安装。
 jenkins 系统管理 --&gt; 系统设置 --&gt; GitHub --&gt; Add GitHub Sever,设置一下jenkins关联 GitHub。
 <strong>注意：这里需要使用上面生成的令牌，使用用户名和密码不起作用，设置后选项内不会出现，已经验证过。</strong>
 <img src="https://losetime.github.io/post-images/1555667469439.png" alt="">
 按照如下图选择添加配置，这个时候就需要用到了我们第一步生成的 GitHub Personal Access Token，填写完毕确认添加
 <img src="https://losetime.github.io/post-images/1555667506907.png" alt="">
 选择生成的凭证，测试jenkins连接github服务器,如下图说明一切都配置 ok，最后记得在页面底部保存配置
-<img src="https://losetime.github.io/post-images/1555667535586.png" alt=""></li>
-<li>jenkins的项目配置</li>
-</ol>
+<img src="https://losetime.github.io/post-images/1555667535586.png" alt=""></p>
+<h2 id="7-jenkins的项目配置">7. jenkins的项目配置</h2>
 <ul>
 <li>jenkins 新建项目，选择构建自由风格项目
-图片: https://uploader.shimo.im/f/siDRRlpqhqA0l0UJ.png</li>
+<img src="https://losetime.github.io/post-images/1555668168134.png" alt=""></li>
+<li>完成之后的页面如下，后面我们做关于项目的配置设置都是基于这样页面（后面可以在项目=&gt;配置中找到这个页面）
+<img src="https://losetime.github.io/post-images/1555668204875.png" alt=""></li>
+<li>填写GitHub 项目URL
+<img src="https://losetime.github.io/post-images/1555668275048.png" alt=""></li>
+<li>源码管理这里连接存储库可能会报错，首先检查服务器上是否安装了git，如果没安装需要安装上，应该可以解决问题，至少我遇到的是这样的。权限用户配置可以使用SSH,也可以HTTP登录名和密码的形式。
+<img src="https://losetime.github.io/post-images/1555668364154.png" alt="">
+<img src="https://losetime.github.io/post-images/1555668389837.png" alt="">
+<img src="https://losetime.github.io/post-images/1555668409918.png" alt="">
+<img src="https://losetime.github.io/post-images/1555668427286.png" alt=""></li>
 </ul>
-<p>完成之后的页面如下，后面我们做关于项目的配置设置都是基于这样页面（后面可以在项目=&gt;配置中找到这个页面）
-图片: https://uploader.shimo.im/f/CcM3xN9XNXUpUEZJ.png</p>
-<p>GitHub 项目
-图片: https://uploader.shimo.im/f/mvNOtH5yawoHYTjr.png
-源码管理这里连接存储库可能会报错，首先检查服务器上是否安装了git，如果没安装需要安装上，应该可以解决问题，至少我遇到的是这样的。权限用户配置可以使用SSH,也可以HTTP登录名和密码的形式。
-图片: https://uploader.shimo.im/f/4cwyd9V2VsIVXsWH.png</p>
-<p>图片: https://uploader.shimo.im/f/D2zfrg1wLaIXD58d.png</p>
-<p>图片: https://uploader.shimo.im/f/yyJ9HLvn5eUT3JEt.png</p>
-<p>图片: https://uploader.shimo.im/f/MA8vP3HqRQ80bkq9.png</p>
-<p>构建的时候注意看下自己nginx的地址是否和代码上一直，如果不一致需要改正。
-图片: https://uploader.shimo.im/f/qEWhxZBH87wDimw4.png
-图片: https://uploader.shimo.im/f/JxIltEQlSu8ZyD4S.png</p>
-<p>echo $PATH  #输出环境变量，可以不要
+<h2 id="8构建">8.构建</h2>
+<p>构建的时候注意看下自己nginx上存放静态资源的地址是否和shell命令中的一致，如果不一致需要改正。
+<img src="https://losetime.github.io/post-images/1555668533356.png" alt=""></p>
+<pre><code>echo $PATH  #输出环境变量，可以不要
 node -v  #输出node版本 ，可以不要
 npm -v #输出npm版本，可以不要
 cd /var/lib/jenkins/workspace/data-search  #cd到项目目录
@@ -182,11 +177,17 @@ npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/ch
 npm install
 npm run build
 cd dist
-tar -zcvf dist.tar.gz *  #将dist包压缩</p>
-<p>scp /var/lib/jenkins/workspace/data-search/dist/dist.tar.gz /usr/share/nginx/html  #把包发送到指定服务器目录
+tar -zcvf dist.tar.gz *  #将dist包压缩
+
+
 cd /usr/share/nginx/html #进入远程服务器的目录
+shopt -s extglob #开启extglob模式，开启之后Shell可以另外识别出5个模式匹配操作符
+rm -fr !(oraitStatic) #删除除了oraitStatic外的所有其他文件 
+shopt -u extglob #关闭extglob模式
+scp /var/lib/jenkins/workspace/data-search/dist/dist.tar.gz /usr/share/nginx/html  #把包发送到指定服务器目录
 tar -zxvf dist.tar.gz #解压dist文件到当前文件夹
-rm -rf dist.tar.gz #删除dist文件</p>
+rm -rf dist.tar.gz #删除dist文件
+</code></pre>
 <p>应用，保存，ok。</p>
 
             </div>
