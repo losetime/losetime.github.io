@@ -86,25 +86,16 @@
             <div class="post-date">2019-04-19</div>
             
             <div class="post-content">
-              <p>yum 自带 node版本，版本太老了，是V6版本的</p>
+              <p> yum 自带 node版本，版本太老了，是V6版本的</p>
 <ol>
-<li>二进制安装方法，右击复制二进制文件链接地址<pre><code> ![](https://losetime.github.io/post-images/1555663308837.png)</code></pre></li>
-<li>使用wget下载压缩文件，使用tar命令解压<pre><code> ```
- wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
- tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）
- ```</code></pre></li>
-<li>配置环境变量<pre><code> 第一种方法
- ```
- vim ~/.bashrc   //打开文件
+<li>二进制安装方法，右击复制二进制文件链接地址<br><img src="https://losetime.github.io/post-images/1555663662014.png" alt=""></li>
+<li>使用wget下载压缩文件，使用tar命令解压<pre><code> wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
+ tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）</code></pre></li>
+<li>配置环境变量<br> 第一种方法<pre><code> vim ~/.bashrc   //打开文件
  export PATH=/root/node-v10.15.3-linux-x64/bin:$PATH  //添加PATH路径
- source ~/.bashrc  //刷新文件
- ```
- 第二种方法（添加软连接将安装目录链接到全局）
- ```
- ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node  
+ source ~/.bashrc  //刷新文件</code></pre>第二种方法（添加软连接将安装目录链接到全局）<pre><code> ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node  
  ln -s /root/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm  
- ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx
- ```</code></pre></li>
+ ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx</code></pre></li>
 </ol>
 
             </div>
