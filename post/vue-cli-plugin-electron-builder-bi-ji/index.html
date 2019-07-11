@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Vue CLI Plugin Electron Builder笔记 | losetime</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1562837598575">
+<link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://losetime.github.io">
+        <img src="https://losetime.github.io/images/avatar.png?v=1562837598575" class="site-logo">
+        <h1 class="site-title">losetime</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/losetime" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      wwp.personal@gmail.com
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Vue CLI Plugin Electron Builder笔记</h2>
+            <div class="post-date">2019-07-11</div>
+            
+            <div class="post-content">
+              <h3 id="1环境变量说明">1.环境变量说明</h3>
+<p>vue.js中设置的【生产环境变量】和【线上环境变量】在electron打包是可用的</p>
+<h3 id="2隐藏顶部菜单栏">2.隐藏顶部菜单栏</h3>
+<p><img src="https://losetime.github.io/post-images/1562837171739.png" alt=""></p>
+<h3 id="3使用electron-build在vue-cli-3中的使用">3.使用electron-build在vue-cli 3中的使用</h3>
+<p>文档参考：https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/#installation</p>
+<p>安装完毕之后项目里会多出一些文件，其中有一个background.js，关于页面的东西需要去这个当中改</p>
+<p>注意事项:node版本必须高于8.12，升级node版本后可以后导致node-sass这个模块的不可用，需要执行【npm rebuild node-sass】去重新绑定</p>
+<h3 id="4窗口宽与高的固定">4.窗口宽与高的固定</h3>
+<pre><code>win = new BrowserWindow({
+
+    width: 400,
+
+    height: 750,
+
+    maxHeight:750,
+
+    maxWidth: 400,
+
+    webPreferences: {
+
+      nodeIntegration: true
+
+    }
+
+ });
+</code></pre>
+<h3 id="4应用打包后打开调试工具">4.应用打包后打开调试工具</h3>
+<p>方法一（主进程）：</p>
+<pre><code>function createWindow (){   
+
+mainWindow = newBrowserWindow({
+
+width:800, 
+
+height:600
+
+})
+
+mainWindow.webContents.openDevTools()
+
+}
+</code></pre>
+<p>方法二（渲染进程）：</p>
+<pre><code>const { remote } = require('electron')
+
+remote.getCurrentWebContents().openDevTools()
+</code></pre>
+<h3 id="6替换图标">6.替换图标</h3>
+<p>1.把图标放在public文件下</p>
+<p>2.安装</p>
+<p><code>yarn add --dev electron-icon-builder（需要科学上网）</code></p>
+<p>3.添加命令：</p>
+<p><code>&quot;electron:generate-icons&quot;: &quot;electron-icon-builder --input=./public/icon.png --output=build --flatten&quot;</code></p>
+<p>4.生成：</p>
+<p><code>yarn electron:generate-icons</code></p>
+<p>5.会生成build文件，不要动</p>
+<p>6.修改配置</p>
+<h3 id="7打包配置科学上网很重要啊">7.打包配置（科学上网很重要啊）</h3>
+<p>参考文章：https://www.jianshu.com/p/1dbb96bc8f37</p>
+<pre><code>module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        appId: &quot;com.example.app&quot;,
+        productName: &quot;hsl-Download&quot;, //项目名，也是生成的安装文件名，即hsl-Download
+        copyright: &quot;Copyright © 2019&quot;, //版权信息
+        directories: {
+          output: &quot;./dist&quot; //输出文件路径
+        },
+        win: {
+          //win相关配置
+          target: [
+            {
+              target: &quot;nsis&quot;, //利用nsis制作安装程序
+              arch: [
+                &quot;x64&quot;, //64位
+                &quot;ia32&quot; //32位
+              ]
+            }
+          ]
+        },
+        nsis: {
+          oneClick: false, // 是否一键安装
+          allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
+          allowToChangeInstallationDirectory: true, // 允许修改安装目录
+          installerIcon: &quot;./static/icon.ico&quot;, // 安装图标
+          uninstallerIcon: &quot;./static/icon.ico&quot;, //卸载图标
+          installerHeaderIcon: &quot;./static/icon.ico&quot;, // 安装时头部图标
+          createDesktopShortcut: true, // 创建桌面图标
+          createStartMenuShortcut: true, // 创建开始菜单图标
+          shortcutName: &quot;hsl-Download&quot; // 图标名称
+        }
+      }
+    }
+  }
+};
+</code></pre>
+<h3 id="8注意事项">8.注意事项</h3>
+<p>1.mac版本必须在mac电脑电脑上打包</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://losetime.github.io/post/er-cha-shu-suan-fa-yuan-li">
+                  <h3 class="post-title">
+                    二叉树算法原理
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
