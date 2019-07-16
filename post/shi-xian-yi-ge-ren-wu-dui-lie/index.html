@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>移动端 | losetime</title>
+<title>实现一个任务队列 | losetime</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -94,58 +94,80 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: 移动端</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/flutter-da-bao-he-ge-xing-hua-xiu-gai">
-                  <h2 class="post-title">Flutter打包和个性化修改</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-08
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/flutter_swiper-zu-jian-de-shi-yong">
-                  <h2 class="post-title">Flutter_Swiper组件的使用</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-08
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/flutter-tong-yong-mo-kuai">
-                  <h2 class="post-title">Flutter 通用模块</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-07
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">实现一个任务队列</h2>
+            <div class="post-date">2019-07-16</div>
+            
+            <div class="post-content">
+              <h1 id="1promise实现任务队列">1.promise实现任务队列</h1>
+<ul>
+<li>promise.then如果遇到没有返回值，那么默认就会把undefined包装成promise后返回，然后继续向下执行</li>
+<li>我们在返回值里 返回一个新的promise，那么第一层的promise就会等到这内部的promise执行完毕后才会返回</li>
+<li>而内部的promise什么时候执行完成，就依赖于resolve何时执行，这就达到了任务队列的目的</li>
+</ul>
+<pre><code>1. forEach版本
 
-          <div class="pagination-container">
-  
-  
-</div>
+function taskQueue(arr){
+    let promise = Promise.resolve();
+    arr.forEach(item=&gt;{
+		//这里需要把返回的Promise实例赋给promise，生成新的队列
+        promise = promise.then(()=&gt;{
+            return new Promise(resolve=&gt;{
+                // do...
+                setTimeout(()=&gt;{
+                    console.log(item)
+                    resolve();
+                },2000)
+                
+            })
+        })
+    })
+}
+
+2. reduce版本
+
+function taskQueue(arr){
+    /**
+     * reduce方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终返回一个值
+     * reduce中callback的返回值会作为下一次的初始值
+     reduce参数
+     * callback，回调函数
+     * initialValue，初始传入值值
+     callback参数
+     * 1.previousValue,上一次调用回调返回的值，或者是提供的初始值
+     * 2.currentValue，数组中当前被处理的元素
+     * 3.index,当前元素在数组中的索引
+     * 4.array,reduce调用的数组
+     */
+    arr.reduce((promise,item,index,array)=&gt;{
+        return promise.then(()=&gt;{
+            return new Promise(resolve=&gt;{
+                setTimeout(()=&gt;{
+                    console.log(item)
+                    resolve();
+                },2000)
+            })
+        })
+    },Promise.resolve())
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://losetime.github.io/post/vue-cli-plugin-electron-builder-bi-ji">
+                  <h3 class="post-title">
+                    Vue CLI Plugin Electron Builder笔记
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>
