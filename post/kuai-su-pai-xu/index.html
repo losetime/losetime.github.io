@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>前端工程化 | losetime</title>
+<title>快速排序 | losetime</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -94,88 +94,55 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: 前端工程化</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/jenkins-pei-zhi-you-jian-tong-zhi/">
-                  <h2 class="post-title">Jenkins配置邮件通知</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/">
-                  <h2 class="post-title">Jenkins的在Liunx系统上的权限问题</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-jenkins/">
-                  <h2 class="post-title">阿里云CentOS配置Jenkins</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/centos-an-zhuang-nodejs/">
-                  <h2 class="post-title">CentOS安装Node.js</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-nigux/">
-                  <h2 class="post-title">阿里云CentOS配置Nigux</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">快速排序</h2>
+            <div class="post-date">2021-04-02</div>
+            
+            <div class="post-content">
+              <figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617373030290.png" alt="" loading="lazy"></figure>
+<pre><code>function quickSort(arr, l, r){
+  if(l&gt;=r) return arr
+  let left = l // 左指针
+  let right = r //右指针
+  let pivot = arr[left] // 基准值
+  // 开启排序
+  while(left &lt; right){  // 如果左指针小于右指针，才能继续，否则说明两个指针相遇了
+    while(arr[left]&lt;pivot &amp;&amp; left&lt;right){
+      left++
+    }
+    while(arr[right]&gt;pivot &amp;&amp; left&lt;right){
+      right--
+    }
+    if(left&lt;right){
+      [arr[left],arr[right]] = [arr[right],arr[left]]
+    } else {
+      arr[left]=pivot
+    }
+  }
+  quickSort(arr, l, left-1)
+  quickSort(arr, left+1, r)
+  return arr
+}
+let sortArr = [2,1,4,3,9,12,100,201,29,80,72,92,54,32,23]
+console.log(quickSort(sortArr, 0, sortArr.length-1))
+</code></pre>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://losetime.github.io/post/shi-xian-yi-ge-ren-wu-dui-lie/">
+                  <h3 class="post-title">
+                    实现一个任务队列
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>
