@@ -1,92 +1,101 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<meta charset="utf-8" >
+
 <title>Jenkins的在Liunx系统上的权限问题 | losetime</title>
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617375152857">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617375223595">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://losetime.github.io">
-  <img class="avatar" src="https://losetime.github.io/images/avatar.png?v=1617375152857" alt="">
-  </a>
-  <h1 class="site-title">
-    losetime
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://losetime.github.io">
+        <img class="avatar" src="https://losetime.github.io/images/avatar.png?v=1617375223595" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://losetime.github.io">
+        <h1 class="site-title">losetime</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Jenkins的在Liunx系统上的权限问题
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-04-19 ·
-              </time>
-              
-                <a href="https://losetime.github.io/tag/engine/" class="post-tags">
-                  # 前端工程化
-                </a>
-              
-            </div>
+          
+          <h2 class="post-title">Jenkins的在Liunx系统上的权限问题</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-04-19</span>
             
-            <div class="post-content">
-              <p>由于Jenkins在安装的时候，会自动创建一个名为jenkins的普通账号，这个账号没有管理员权限。jenkins执行命令的时候，它也会使用这个账号。但是由于nginx这个文件夹是用户root创建的，所以jenkins账号默认是没有权限读写这个文件夹的。所以导致构建的项目总是在复制的时候失败。</p>
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://losetime.github.io/tag/engine/">
+                    前端工程化
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>由于Jenkins在安装的时候，会自动创建一个名为jenkins的普通账号，这个账号没有管理员权限。jenkins执行命令的时候，它也会使用这个账号。但是由于nginx这个文件夹是用户root创建的，所以jenkins账号默认是没有权限读写这个文件夹的。所以导致构建的项目总是在复制的时候失败。</p>
 <h3 id="下来以centos系统为例修改jenkins配置文件">下来以centOS系统为例，修改Jenkins配置文件。</h3>
 <ul>
 <li>打开配置文件</li>
@@ -118,32 +127,57 @@ chown -R root:root /var/log/jenkins
 <h3 id="若显示为root用户则表示修改完成">若显示为root用户，则表示修改完成</h3>
 <figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1555669015905.png" alt="" loading="lazy"></figure>
 
-            </div>
-          </article>
+          </div>
         </div>
-    
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-jenkins/">
-              <h3 class="post-title">
-                阿里云CentOS配置Jenkins
-              </h3>
-            </a>
-          </div>  
-        
 
         
+          <div class="next-post">
+            <a class="purple-link" href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-jenkins/">
+              <h3 class="post-title">
+                下一篇：阿里云CentOS配置Jenkins
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
     
-        <div class="site-footer">
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
   wwp.personal@gmail.com
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
