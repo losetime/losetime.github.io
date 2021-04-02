@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>Jenkins的在Liunx系统上的权限问题 | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,74 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Jenkins的在Liunx系统上的权限问题
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-04-19 ·
+                    </time>
+                    
+                        <a href="https://losetime.github.io/engine/" class="post-tags">
+                            # 前端工程化
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>由于Jenkins在安装的时候，会自动创建一个名为jenkins的普通账号，这个账号没有管理员权限。jenkins执行命令的时候，它也会使用这个账号。但是由于nginx这个文件夹是用户root创建的，所以jenkins账号默认是没有权限读写这个文件夹的。所以导致构建的项目总是在复制的时候失败。</p>
+<h3 id="下来以centos系统为例修改jenkins配置文件">下来以centOS系统为例，修改Jenkins配置文件。</h3>
+<ul>
+<li>打开配置文件</li>
+</ul>
+<pre><code>vim /etc/sysconfig/jenkins
+</code></pre>
+<ul>
+<li>修改$JENKINS_USER</li>
+</ul>
+<pre><code>$JENKINS_USER=&quot;root&quot;
+</code></pre>
+<ul>
+<li>修改Jenkins相关文件夹用户权限</li>
+</ul>
+<pre><code>chown -R root:root /var/lib/jenkins
+chown -R root:root /var/cache/jenkins
+chown -R root:root /var/log/jenkins
+</code></pre>
+<ul>
+<li>重启Jenkins服务并检查运行Jenkins的用户是否已经切换为root</li>
+</ul>
+<pre><code>service jenkins restart
+</code></pre>
+<ul>
+<li>查看Jenkins进程所属用户</li>
+</ul>
+<pre><code>ps -ef | grep jenkins
+</code></pre>
+<h3 id="若显示为root用户则表示修改完成">若显示为root用户，则表示修改完成</h3>
+<figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1555669015905.png" alt="" loading="lazy"></figure>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/a-li-yun-centos-pei-zhi-jenkins/" class="post-title gt-a-link">
+                    阿里云CentOS配置Jenkins
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">

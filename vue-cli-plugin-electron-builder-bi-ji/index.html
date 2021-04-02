@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>Vue CLI Plugin Electron Builder笔记 | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,143 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Vue CLI Plugin Electron Builder笔记
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-07-11 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="1环境变量说明">1.环境变量说明</h3>
+<p>vue.js中设置的【生产环境变量】和【线上环境变量】在electron打包是可用的</p>
+<h3 id="2隐藏顶部菜单栏">2.隐藏顶部菜单栏</h3>
+<figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1562837171739.png" alt="" loading="lazy"></figure>
+<h3 id="3使用electron-build在vue-cli-3中的使用">3.使用electron-build在vue-cli 3中的使用</h3>
+<p>文档参考：https://nklayman.github.io/vue-cli-plugin-electron-builder/guide/#installation</p>
+<p>安装完毕之后项目里会多出一些文件，其中有一个background.js，关于页面的东西需要去这个当中改</p>
+<p>注意事项:node版本必须高于8.12，升级node版本后可以后导致node-sass这个模块的不可用，需要执行【npm rebuild node-sass】去重新绑定</p>
+<h3 id="4窗口宽与高的固定">4.窗口宽与高的固定</h3>
+<pre><code>win = new BrowserWindow({
+
+    width: 400,
+
+    height: 750,
+
+    maxHeight:750,
+
+    maxWidth: 400,
+
+    webPreferences: {
+
+      nodeIntegration: true
+
+    }
+
+ });
+</code></pre>
+<h3 id="4应用打包后打开调试工具">4.应用打包后打开调试工具</h3>
+<p>方法一（主进程）：</p>
+<pre><code>function createWindow (){   
+
+mainWindow = newBrowserWindow({
+
+width:800, 
+
+height:600
+
+})
+
+mainWindow.webContents.openDevTools()
+
+}
+</code></pre>
+<p>方法二（渲染进程）：</p>
+<pre><code>const { remote } = require('electron')
+
+remote.getCurrentWebContents().openDevTools()
+</code></pre>
+<h3 id="6替换图标">6.替换图标</h3>
+<p>1.把图标放在public文件下</p>
+<p>2.安装</p>
+<p><code>yarn add --dev electron-icon-builder（需要科学上网）</code></p>
+<p>3.添加命令：</p>
+<p><code>&quot;electron:generate-icons&quot;: &quot;electron-icon-builder --input=./public/icon.png --output=build --flatten&quot;</code></p>
+<p>4.生成：</p>
+<p><code>yarn electron:generate-icons</code></p>
+<p>5.会生成build文件，不要动</p>
+<p>6.修改配置</p>
+<h3 id="7打包配置科学上网很重要啊">7.打包配置（科学上网很重要啊）</h3>
+<p>参考文章：https://www.jianshu.com/p/1dbb96bc8f37<br>
+参考文档：https://www.electron.build/configuration/configuration</p>
+<pre><code>module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        appId: &quot;com.example.app&quot;,
+        productName: &quot;hsl-Download&quot;, //项目名，也是生成的安装文件名，即hsl-Download
+        copyright: &quot;Copyright © 2019&quot;, //版权信息
+        directories: {
+          output: &quot;./dist&quot; //输出文件路径
+        },
+        win: {
+          //win相关配置
+          target: [
+            {
+              target: &quot;nsis&quot;, //利用nsis制作安装程序
+              arch: [
+                &quot;x64&quot;, //64位
+                &quot;ia32&quot; //32位
+              ]
+            }
+          ]
+        },
+        nsis: {
+          oneClick: false, // 是否一键安装
+          allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
+          allowToChangeInstallationDirectory: true, // 允许修改安装目录
+          installerIcon: &quot;./static/icon.ico&quot;, // 安装图标
+          uninstallerIcon: &quot;./static/icon.ico&quot;, //卸载图标
+          installerHeaderIcon: &quot;./static/icon.ico&quot;, // 安装时头部图标
+          createDesktopShortcut: true, // 创建桌面图标
+          createStartMenuShortcut: true, // 创建开始菜单图标
+          shortcutName: &quot;hsl-Download&quot; // 图标名称
+        }
+      }
+    }
+  }
+};
+</code></pre>
+<h3 id="8注意事项">8.注意事项</h3>
+<p>1.mac版本必须在mac电脑电脑上打包</p>
+<h3 id="9遇到的错误">9.遇到的错误</h3>
+<p>1.打包时项目路径中不能有中文。报错如下：<br>
+<img src="https://losetime.github.io/post-images/1563938293861.png" alt="" loading="lazy"></p>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/er-cha-shu-suan-fa-yuan-li/" class="post-title gt-a-link">
+                    二叉树算法原理
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">

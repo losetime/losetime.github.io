@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>Flutter_Swiper组件的使用 | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,126 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Flutter_Swiper组件的使用
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-04-08 ·
+                    </time>
+                    
+                        <a href="https://losetime.github.io/mobile/" class="post-tags">
+                            # 移动端
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>import 'package:flutter/material.dart';<br>
+import 'package:flutter_swiper/flutter_swiper.dart';<br>
+class Home extends StatelessWidget{<br>
+@override<br>
+Widget build(BuildContext context) {<br>
+return new MaterialApp(<br>
+title: '首页',<br>
+theme: new ThemeData(<br>
+primarySwatch: Colors.blue,<br>
+),<br>
+home: new MyHomePage(title: '首页'),<br>
+);<br>
+}<br>
+}</p>
+<p>class MyHomePage extends StatefulWidget {<br>
+MyHomePage({Key key, this.title}) : super(key: key);</p>
+<p>final String title;</p>
+<p>@override<br>
+_MyHomePageState createState() =&gt; new _MyHomePageState();<br>
+}</p>
+<p>class _MyHomePageState extends State<MyHomePage> {<br>
+List<Widget> imageList = List();</p>
+<p>@override<br>
+void initState() {<br>
+imageList<br>
+..add(Image.network(<br>
+'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg',<br>
+fit: BoxFit.fill,<br>
+))<br>
+..add(Image.network(<br>
+'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg',<br>
+fit: BoxFit.fill,<br>
+))<br>
+..add(Image.network(<br>
+'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg',<br>
+fit: BoxFit.fill,<br>
+))<br>
+..add(Image.network(<br>
+'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg',<br>
+fit: BoxFit.fill,<br>
+));<br>
+super.initState();<br>
+}</p>
+<p>@override<br>
+Widget build(BuildContext context) {<br>
+return Scaffold(<br>
+appBar: new AppBar(<br>
+title: new Text(widget.title),<br>
+),<br>
+body: ListView(<br>
+children: <Widget>[<br>
+firstSwiperView()<br>
+],<br>
+)<br>
+);<br>
+}<br>
+Widget firstSwiperView(){<br>
+return Container(<br>
+// padding: const EdgeInsets.fromLTRB(0, 50, 0, 5),<br>
+width: MediaQuery.of(context).size.width,<br>
+height: 150,<br>
+child: Swiper(<br>
+itemCount: 4,<br>
+itemBuilder: _swiperBuilder,<br>
+pagination: SwiperPagination(<br>
+alignment: Alignment.bottomRight,<br>
+// margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),<br>
+builder: DotSwiperPaginationBuilder(<br>
+color: Colors.black54,<br>
+activeColor: Colors.white<br>
+)<br>
+),<br>
+controller: SwiperController(),<br>
+scrollDirection: Axis.horizontal,<br>
+autoplay: true,<br>
+onTap: (index) =&gt; print('点击了第$index'),<br>
+),<br>
+);<br>
+}</p>
+<p>Widget _swiperBuilder(BuildContext context, int index){<br>
+return (imageList[index]);<br>
+}<br>
+}</p>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/flutter-tong-yong-mo-kuai/" class="post-title gt-a-link">
+                    Flutter 通用模块
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">

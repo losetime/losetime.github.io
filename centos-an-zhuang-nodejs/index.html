@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>CentOS安装Node.js | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,69 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    CentOS安装Node.js
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-04-19 ·
+                    </time>
+                    
+                        <a href="https://losetime.github.io/engine/" class="post-tags">
+                            # 前端工程化
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>Yum 自带 Node版本，但是版本太老了，是V6版本的，所以我们需要重新安装。</p>
+<ol>
+<li>二进制安装方法，右击复制二进制文件链接地址<br>
+<img src="https://losetime.github.io/post-images/1555663662014.png" alt="" loading="lazy"></li>
+<li>使用wget下载压缩文件，使用tar命令解压</li>
+</ol>
+<pre><code>wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
+tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）
+</code></pre>
+<ol start="3">
+<li>配置环境变量</li>
+</ol>
+<ul>
+<li>第一种方法</li>
+</ul>
+<pre><code>vim ~/.bashrc   //打开文件
+export PATH=/root/node-v10.15.3-linux-x64/bin:$PATH  //添加PATH路径
+source ~/.bashrc  //刷新文件
+</code></pre>
+<ul>
+<li>第二种方法（添加软连接将安装目录链接到全局）</li>
+</ul>
+<pre><code>ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node  
+ln -s /root/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm  
+ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx
+</code></pre>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/" class="post-title gt-a-link">
+                    阿里云CentOS配置Nigux
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">

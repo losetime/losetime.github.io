@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://losetime.github.io</id>
     <title>losetime</title>
-    <updated>2021-04-02T14:53:47.131Z</updated>
+    <updated>2021-04-02T15:24:41.834Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://losetime.github.io"/>
     <link rel="self" href="https://losetime.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2021, losetime</rights>
     <entry>
         <title type="html"><![CDATA[快速排序]]></title>
-        <id>https://losetime.github.io/post/kuai-su-pai-xu/</id>
-        <link href="https://losetime.github.io/post/kuai-su-pai-xu/">
+        <id>https://losetime.github.io/kuai-su-pai-xu/</id>
+        <link href="https://losetime.github.io/kuai-su-pai-xu/">
         </link>
         <updated>2021-04-02T14:06:01.000Z</updated>
         <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617375144226.png" alt="" loading="lazy"></figure>
@@ -47,8 +47,8 @@ console.log(quickSort(sortArr, 0, sortArr.length-1))
     </entry>
     <entry>
         <title type="html"><![CDATA[实现一个任务队列]]></title>
-        <id>https://losetime.github.io/post/shi-xian-yi-ge-ren-wu-dui-lie/</id>
-        <link href="https://losetime.github.io/post/shi-xian-yi-ge-ren-wu-dui-lie/">
+        <id>https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/</id>
+        <link href="https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/">
         </link>
         <updated>2019-07-16T03:00:02.000Z</updated>
         <content type="html"><![CDATA[<h1 id="1promise实现任务队列">1.promise实现任务队列</h1>
@@ -107,8 +107,8 @@ function taskQueue(arr){
     </entry>
     <entry>
         <title type="html"><![CDATA[Vue CLI Plugin Electron Builder笔记]]></title>
-        <id>https://losetime.github.io/post/vue-cli-plugin-electron-builder-bi-ji/</id>
-        <link href="https://losetime.github.io/post/vue-cli-plugin-electron-builder-bi-ji/">
+        <id>https://losetime.github.io/vue-cli-plugin-electron-builder-bi-ji/</id>
+        <link href="https://losetime.github.io/vue-cli-plugin-electron-builder-bi-ji/">
         </link>
         <updated>2019-07-11T09:23:56.000Z</updated>
         <content type="html"><![CDATA[<h3 id="1环境变量说明">1.环境变量说明</h3>
@@ -219,8 +219,8 @@ remote.getCurrentWebContents().openDevTools()
     </entry>
     <entry>
         <title type="html"><![CDATA[二叉树算法原理]]></title>
-        <id>https://losetime.github.io/post/er-cha-shu-suan-fa-yuan-li/</id>
-        <link href="https://losetime.github.io/post/er-cha-shu-suan-fa-yuan-li/">
+        <id>https://losetime.github.io/er-cha-shu-suan-fa-yuan-li/</id>
+        <link href="https://losetime.github.io/er-cha-shu-suan-fa-yuan-li/">
         </link>
         <updated>2019-04-20T10:21:52.000Z</updated>
         <content type="html"><![CDATA[<h3 id="1-二叉树特点">1.  二叉树特点</h3>
@@ -365,8 +365,8 @@ binaryTree.remove(1);</code></pre>
     </entry>
     <entry>
         <title type="html"><![CDATA[Jenkins配置邮件通知]]></title>
-        <id>https://losetime.github.io/post/jenkins-pei-zhi-you-jian-tong-zhi/</id>
-        <link href="https://losetime.github.io/post/jenkins-pei-zhi-you-jian-tong-zhi/">
+        <id>https://losetime.github.io/jenkins-pei-zhi-you-jian-tong-zhi/</id>
+        <link href="https://losetime.github.io/jenkins-pei-zhi-you-jian-tong-zhi/">
         </link>
         <updated>2019-04-19T11:09:47.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1-自带邮件配置">1. 自带邮件配置</h2>
@@ -406,8 +406,8 @@ binaryTree.remove(1);</code></pre>
     </entry>
     <entry>
         <title type="html"><![CDATA[Jenkins的在Liunx系统上的权限问题]]></title>
-        <id>https://losetime.github.io/post/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/</id>
-        <link href="https://losetime.github.io/post/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/">
+        <id>https://losetime.github.io/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/</id>
+        <link href="https://losetime.github.io/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/">
         </link>
         <updated>2019-04-19T09:38:20.000Z</updated>
         <content type="html"><![CDATA[<p>由于Jenkins在安装的时候，会自动创建一个名为jenkins的普通账号，这个账号没有管理员权限。jenkins执行命令的时候，它也会使用这个账号。但是由于nginx这个文件夹是用户root创建的，所以jenkins账号默认是没有权限读写这个文件夹的。所以导致构建的项目总是在复制的时候失败。</p>
@@ -445,8 +445,8 @@ chown -R root:root /var/log/jenkins
     </entry>
     <entry>
         <title type="html"><![CDATA[阿里云CentOS配置Jenkins]]></title>
-        <id>https://losetime.github.io/post/a-li-yun-centos-pei-zhi-jenkins/</id>
-        <link href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-jenkins/">
+        <id>https://losetime.github.io/a-li-yun-centos-pei-zhi-jenkins/</id>
+        <link href="https://losetime.github.io/a-li-yun-centos-pei-zhi-jenkins/">
         </link>
         <updated>2019-04-19T09:31:16.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1-下载jenkins">1. 下载jenkins</h2>
@@ -543,8 +543,8 @@ rm -rf dist.tar.gz #删除dist文件
     </entry>
     <entry>
         <title type="html"><![CDATA[CentOS安装Node.js]]></title>
-        <id>https://losetime.github.io/post/centos-an-zhuang-nodejs/</id>
-        <link href="https://losetime.github.io/post/centos-an-zhuang-nodejs/">
+        <id>https://losetime.github.io/centos-an-zhuang-nodejs/</id>
+        <link href="https://losetime.github.io/centos-an-zhuang-nodejs/">
         </link>
         <updated>2019-04-19T08:36:04.000Z</updated>
         <content type="html"><![CDATA[<p>Yum 自带 Node版本，但是版本太老了，是V6版本的，所以我们需要重新安装。</p>
@@ -577,8 +577,8 @@ ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx
     </entry>
     <entry>
         <title type="html"><![CDATA[阿里云CentOS配置Nigux]]></title>
-        <id>https://losetime.github.io/post/a-li-yun-centos-pei-zhi-nigux/</id>
-        <link href="https://losetime.github.io/post/a-li-yun-centos-pei-zhi-nigux/">
+        <id>https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/</id>
+        <link href="https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/">
         </link>
         <updated>2019-04-18T05:43:08.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -676,8 +676,8 @@ yum install java-1.8.0-openjdk
     </entry>
     <entry>
         <title type="html"><![CDATA[Flutter打包和个性化修改]]></title>
-        <id>https://losetime.github.io/post/flutter-da-bao-he-ge-xing-hua-xiu-gai/</id>
-        <link href="https://losetime.github.io/post/flutter-da-bao-he-ge-xing-hua-xiu-gai/">
+        <id>https://losetime.github.io/flutter-da-bao-he-ge-xing-hua-xiu-gai/</id>
+        <link href="https://losetime.github.io/flutter-da-bao-he-ge-xing-hua-xiu-gai/">
         </link>
         <updated>2019-04-08T04:34:59.000Z</updated>
         <content type="html"><![CDATA[<ol>

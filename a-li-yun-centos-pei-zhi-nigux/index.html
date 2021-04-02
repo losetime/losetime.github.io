@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>阿里云CentOS配置Nigux | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,134 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    阿里云CentOS配置Nigux
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-04-18 ·
+                    </time>
+                    
+                        <a href="https://losetime.github.io/engine/" class="post-tags">
+                            # 前端工程化
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <ol>
+<li>CentOS自带yum源，所以可以直接使用</li>
+<li>安装</li>
+</ol>
+<pre><code>sudo yum install -y nginx
+</code></pre>
+<ol start="3">
+<li>默认安装目录： /usr/share/nginx/</li>
+<li>启动</li>
+</ol>
+<pre><code>sudo stystemctl start nginx.service
+</code></pre>
+<ol start="5">
+<li>开机启动</li>
+</ol>
+<pre><code>sudo systemctl enable nginx.service
+</code></pre>
+<ol start="6">
+<li>网站文件存放默认目录</li>
+</ol>
+<pre><code>/usr/share/nginx/html
+</code></pre>
+<ol start="7">
+<li>站默认站点配置</li>
+</ol>
+<pre><code>/etc/nginx/conf.d/default.conf
+</code></pre>
+<ol start="8">
+<li>自定义Nginx站点配置文件存放目录</li>
+</ol>
+<pre><code>/etc/nginx/conf.d/
+</code></pre>
+<ol start="9">
+<li>Nginx全局配置</li>
+</ol>
+<pre><code>/etc/nginx/nginx.conf
+</code></pre>
+<ol start="10">
+<li>彻底卸载Nginx（其他软件相同）</li>
+</ol>
+<ul>
+<li>停止Nginx软件<br>
+<code>service nginx stop</code></li>
+<li>删除Nginx的自动启动<br>
+<code>chkconfig nginx off</code></li>
+<li>从源头删除Nginx</li>
+</ul>
+<pre><code>rm -rf /usr/sbin/nginx
+rm -rf /etc/nginx
+rm -rf /etc/init.d/nginx
+</code></pre>
+<ul>
+<li>再使用yum清理<br>
+<code>yum remove nginx</code></li>
+</ul>
+<p>11.安装软件（例如java）</p>
+<pre><code>yum search java|grep jdk
+
+或者： yum list 软件名
+
+yum install java-1.8.0-openjdk
+</code></pre>
+<ol start="12">
+<li>升级所有的软件包</li>
+</ol>
+<pre><code>yum update
+</code></pre>
+<ol start="13">
+<li>升级某一个软件包 ，以升级 tomcat 为例</li>
+</ol>
+<pre><code>yum update tomcat
+</code></pre>
+<ol start="14">
+<li>检查可更新的程序</li>
+</ol>
+<pre><code>yum check-update
+</code></pre>
+<ol start="15">
+<li>查看所有进程</li>
+</ol>
+<pre><code>netstat -nap
+</code></pre>
+<ol start="16">
+<li>杀死进程</li>
+</ol>
+<pre><code>kill PID编号
+</code></pre>
+<ol start="17">
+<li>解决ssh服务器的x11 forwarding报错<br>
+<img src="https://losetime.github.io/post-images/1555566876356.png" alt="" loading="lazy"></li>
+</ol>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/flutter-da-bao-he-ge-xing-hua-xiu-gai/" class="post-title gt-a-link">
+                    Flutter打包和个性化修改
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">

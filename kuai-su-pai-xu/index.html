@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>快速排序 | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,70 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    快速排序
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-04-02 ·
+                    </time>
+                    
+                        <a href="https://losetime.github.io/algorithm/" class="post-tags">
+                            # 算法
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617375144226.png" alt="" loading="lazy"></figure>
+<pre><code>function quickSort(arr, l, r){
+  if(l&gt;=r) return arr
+  let left = l // 左指针
+  let right = r //右指针
+  let pivot = arr[left] // 基准值
+  // 开启排序
+  while(left &lt; right){  // 如果左指针小于右指针，才能继续，否则说明两个指针相遇了
+    while(arr[left]&lt;pivot &amp;&amp; left&lt;right){
+      left++
+    }
+    while(arr[right]&gt;pivot &amp;&amp; left&lt;right){
+      right--
+    }
+    if(left&lt;right){
+      [arr[left],arr[right]] = [arr[right],arr[left]]
+    } else {
+      arr[left]=pivot
+    }
+  }
+  quickSort(arr, l, left-1)
+  quickSort(arr, left+1, r)
+  return arr
+}
+let sortArr = [2,1,4,3,9,12,100,201,29,80,72,92,54,32,23]
+console.log(quickSort(sortArr, 0, sortArr.length-1))
+</code></pre>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/" class="post-title gt-a-link">
+                    实现一个任务队列
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">

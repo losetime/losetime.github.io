@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>标签 | losetime</title>
+<title>Jenkins配置邮件通知 | losetime</title>
 
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617376814309">
 
@@ -33,11 +33,11 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <style>
+    <style>
     /* 导航栏样式 */
     .navbar {
         position: relative;
@@ -198,25 +198,76 @@
         }
     }
 </script>
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/algorithm/">#算法</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/engine/">#前端工程化</a>
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://losetime.github.io/mobile/">#移动端</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Jenkins配置邮件通知
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-04-19 ·
+                    </time>
+                    
+                        <a href="https://losetime.github.io/engine/" class="post-tags">
+                            # 前端工程化
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="1-自带邮件配置">1. 自带邮件配置</h2>
+<p>打开全局系统配置，配置Jenkins Location，见图。<br>
+<img src="https://losetime.github.io/post-images/1555672361973.png" alt="" loading="lazy"><br>
+全局系统配置，配置邮件通知，见图。<br>
+这里说一下，怎么打开邮箱的SMTP服务，这是QQ邮箱的教程：https://jingyan.baidu.com/article/0f5fb099dffe7c6d8334ea31.html<br>
+其他邮箱应该大同小异，可以去找找。不过建议不要用Gmail，会牵扯到科学上网的问题。<br>
+<img src="https://losetime.github.io/post-images/1555672404765.png" alt="" loading="lazy"><br>
+配置任务构建后操作<br>
+打开单项任务的配置-----》构建后操作 ，选择下图<br>
+<img src="https://losetime.github.io/post-images/1555672415099.png" alt="" loading="lazy"><br>
+写入邮件地址即可，保存<br>
+<img src="https://losetime.github.io/post-images/1555672421153.png" alt="" loading="lazy"><br>
+收到的邮件如下图，可以看到，这只是构建中打印的日志文件，看起来太费劲。不过，如果你只是想知道构建是否失败了，这个还是可以用的。<br>
+<img src="https://losetime.github.io/post-images/1555672428133.png" alt="" loading="lazy"></p>
+<h2 id="2-插件extended-e-mail-notification配置">2. 插件Extended E-mail Notification配置</h2>
+<p>这个插件增强了邮件功能，使邮件可以自定义，如果没安装就去搜索并安装一下，然后我们一起走一遍过程。</p>
+<h3 id="说明一点如果你直接用插件配置是可以不用配置系统自带邮件的这个经过验证">说明一点：如果你直接用插件配置，是可以不用配置系统自带邮件的，这个经过验证。</h3>
+<ul>
+<li>首先，在系统设置里找到这个插件，然后如图所示配置<br>
+<img src="https://losetime.github.io/post-images/1555672636498.png" alt="" loading="lazy"></li>
+<li>点开上图【高级...】，配置如下图<br>
+<img src="https://losetime.github.io/post-images/1555672660244.png" alt="" loading="lazy"></li>
+<li>点开上图【Default Triggers】，根据需要选择发送邮件的条件，可以选择总是，也可以选择其他特殊情况。<br>
+<img src="https://losetime.github.io/post-images/1555672664292.png" alt="" loading="lazy"></li>
+<li>应用，保存。</li>
+<li>打开任务配置，打开【构建后操作】列表<br>
+<img src="https://losetime.github.io/post-images/1555672687607.png" alt="" loading="lazy"></li>
+<li>设置触发条件<br>
+<img src="https://losetime.github.io/post-images/1555672692305.png" alt="" loading="lazy"><br>
+<img src="https://losetime.github.io/post-images/1555672696196.png" alt="" loading="lazy"></li>
+<li>其他都可以不用动，应用，保存。</li>
+<li>逻辑是我们在全局设置了配置好了模板，这边添加一个构建动作，然后执行就可以，也可以在这边配置基于项目的个性化需求。</li>
+</ul>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://losetime.github.io/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/" class="post-title gt-a-link">
+                    Jenkins的在Liunx系统上的权限问题
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">温故而知新</div>
     <div class="social-container">
