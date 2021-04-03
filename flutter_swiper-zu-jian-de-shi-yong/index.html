@@ -1,381 +1,244 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="utf-8" >
 
 <title>Flutter_Swiper组件的使用 | losetime</title>
+<meta name="description" content="温故而知新">
 
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617452943815">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617455075681">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
-
-<style>
-    hr {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        border: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <style>
-    /* 导航栏样式 */
-    .navbar {
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -ms-flex-align: center;
-        align-items: center;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
-    }
 
-    .navbar-brand {
-        display: inline-block;
-        padding-top: 0.3125rem;
-        padding-bottom: 0.3125rem;
-        margin-right: 1rem;
-        font-size: 1.25rem;
-        line-height: inherit;
-        white-space: nowrap;
-    }
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-    .navbar-brand:hover,
-    .navbar-brand:focus {
-        text-decoration: none;
-    }
-
-    .navbar-nav {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-    }
-
-    .navbar-collapse {
-        -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
-    .navbar-toggler {
-        padding: 0.25rem 0.75rem;
-        font-size: 1.25rem;
-        line-height: 1;
-        background-color: transparent;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-    }
-
-    .navbar-toggler:hover,
-    .navbar-toggler:focus {
-        text-decoration: none;
-    }
-
-    @media (min-width: 992px) {
-        .navbar-expand-lg {
-            -ms-flex-flow: row nowrap;
-            flex-flow: row nowrap;
-            -ms-flex-pack: start;
-            justify-content: flex-start;
-        }
-
-        .navbar-expand-lg .navbar-nav {
-            -ms-flex-direction: row;
-            flex-direction: row;
-        }
-
-        .navbar-expand-lg .navbar-collapse {
-            display: -ms-flexbox !important;
-            display: flex !important;
-            -ms-flex-preferred-size: auto;
-            flex-basis: auto;
-        }
-
-        .navbar-expand-lg .navbar-toggler {
-            display: none;
-        }
-    }
-
-    @media (max-width: 991px) {
-        #navbarSupportedContent {
-            display: none;
-        }
-    }
-</style>
-<nav class="navbar navbar-expand-lg">
-    <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            losetime
-        </div>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
-            
-            <div class="nav-item">
-                
-                <a href="/" class="menu gt-a-link">
-                    首页
-                </a>
-                
-            </div>
-            
-            <div class="nav-item">
-                
-                <a href="/archives" class="menu gt-a-link">
-                    归档
-                </a>
-                
-            </div>
-            
-            <div class="nav-item">
-                
-                <a href="/tags" class="menu gt-a-link">
-                    标签
-                </a>
-                
-            </div>
-            
-            <div class="nav-item">
-                
-                <a href="/post/about" class="menu gt-a-link">
-                    关于
-                </a>
-                
-            </div>
-            
-        </div>
-        <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1617452943815"
-                action="/search/index.html">
-                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
-                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
-            </form>
-        </div>
-    </div>
-</nav>
-<script>
-    /* 移动端导航栏展开/收起切换 */
-    document.getElementById('changeNavbar').onclick = function () {
-        var element = document.getElementById('navbarSupportedContent');
-        if (element.style.display === 'none' || element.style.display === '') {
-            element.style.display = 'block';
-        } else {
-            element.style.display = 'none';
-        }
-    }
-</script>
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    Flutter_Swiper组件的使用
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2019-04-08 ·
-                    </time>
-                    
-                        <a href="https://losetime.github.io/mobile/" class="post-tags">
-                            # 移动端
-                        </a>
-                    
-                </div>
-                <div class="post-content">
-                    <p>import 'package:flutter/material.dart';<br>
-import 'package:flutter_swiper/flutter_swiper.dart';<br>
-class Home extends StatelessWidget{<br>
-@override<br>
-Widget build(BuildContext context) {<br>
-return new MaterialApp(<br>
-title: '首页',<br>
-theme: new ThemeData(<br>
-primarySwatch: Colors.blue,<br>
-),<br>
-home: new MyHomePage(title: '首页'),<br>
-);<br>
-}<br>
-}</p>
-<p>class MyHomePage extends StatefulWidget {<br>
-MyHomePage({Key key, this.title}) : super(key: key);</p>
-<p>final String title;</p>
-<p>@override<br>
-_MyHomePageState createState() =&gt; new _MyHomePageState();<br>
-}</p>
-<p>class _MyHomePageState extends State<MyHomePage> {<br>
-List<Widget> imageList = List();</p>
-<p>@override<br>
-void initState() {<br>
-imageList<br>
-..add(Image.network(<br>
-'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg',<br>
-fit: BoxFit.fill,<br>
-))<br>
-..add(Image.network(<br>
-'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg',<br>
-fit: BoxFit.fill,<br>
-))<br>
-..add(Image.network(<br>
-'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg',<br>
-fit: BoxFit.fill,<br>
-))<br>
-..add(Image.network(<br>
-'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg',<br>
-fit: BoxFit.fill,<br>
-));<br>
-super.initState();<br>
-}</p>
-<p>@override<br>
-Widget build(BuildContext context) {<br>
-return Scaffold(<br>
-appBar: new AppBar(<br>
-title: new Text(widget.title),<br>
-),<br>
-body: ListView(<br>
-children: <Widget>[<br>
-firstSwiperView()<br>
-],<br>
-)<br>
-);<br>
-}<br>
-Widget firstSwiperView(){<br>
-return Container(<br>
-// padding: const EdgeInsets.fromLTRB(0, 50, 0, 5),<br>
-width: MediaQuery.of(context).size.width,<br>
-height: 150,<br>
-child: Swiper(<br>
-itemCount: 4,<br>
-itemBuilder: _swiperBuilder,<br>
-pagination: SwiperPagination(<br>
-alignment: Alignment.bottomRight,<br>
-// margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),<br>
-builder: DotSwiperPaginationBuilder(<br>
-color: Colors.black54,<br>
-activeColor: Colors.white<br>
-)<br>
-),<br>
-controller: SwiperController(),<br>
-scrollDirection: Axis.horizontal,<br>
-autoplay: true,<br>
-onTap: (index) =&gt; print('点击了第$index'),<br>
-),<br>
-);<br>
-}</p>
-<p>Widget _swiperBuilder(BuildContext context, int index){<br>
-return (imageList[index]);<br>
-}<br>
-}</p>
-
-                </div>
-            </article>
-        </div>
-
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://losetime.github.io/flutter-tong-yong-mo-kuai/" class="post-title gt-a-link">
-                    Flutter 通用模块
-                </a>
-            </div>
-        
-
-        
-
-        
-
-        
-            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
-
-<style>
-	div#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
-	}
-</style>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
-	<div id="vcomments"></div>
 
-<script>
-	new Valine({
-		el: '#vcomments',
-		appId: '',
-		appKey: '',
-		avatar: '',
-		pageSize: 5,
-		recordIp: false,
-		placeholder: 'Just Go Go',
-		visitor: false,
-	});
-</script>
+  </head>
+  <body>
+    <div id="app" class="main">
 
-        
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">温故而知新</div>
-    <div class="social-container">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        wwp.personal@gmail.com
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://losetime.github.io">
+        <img src="https://losetime.github.io/images/avatar.png?v=1617455075681" class="site-logo">
+        <h1 class="site-title">losetime</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
     <div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://losetime.github.io/atom.xml" target="_blank">RSS</a></a>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
     </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/losetime" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      wwp.personal@gmail.com
+    </div>
+  </div>
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Flutter_Swiper组件的使用</h2>
+            <div class="post-date">2019-04-08</div>
+            
+            <div class="post-content">
+              <pre><code>import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+class Home extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: '首页',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new MyHomePage(title: '首页'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+  
+  @override
+  _MyHomePageState createState() =&gt; new _MyHomePageState();
+}
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+  List&lt;Widget&gt; imageList = List();
+
+  @override
+  void initState() {
+    imageList
+    ..add(Image.network(
+      'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2726034926,4129010873&amp;fm=26&amp;gp=0.jpg',
+      fit: BoxFit.fill,
+    ))
+    ..add(Image.network(
+      'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3485348007,2192172119&amp;fm=26&amp;gp=0.jpg',
+      fit: BoxFit.fill,
+    ))
+    ..add(Image.network(
+      'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2594792439,969125047&amp;fm=26&amp;gp=0.jpg',
+      fit: BoxFit.fill,
+    ))
+    ..add(Image.network(
+      'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=190488632,3936347730&amp;fm=26&amp;gp=0.jpg',
+      fit: BoxFit.fill,
+    ));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: ListView(
+        children: &lt;Widget&gt;[
+          firstSwiperView()
+        ],
+      )
+    );
+  }
+  Widget firstSwiperView(){
+    return Container(
+      // padding: const EdgeInsets.fromLTRB(0, 50, 0, 5),
+      width: MediaQuery.of(context).size.width,
+      height: 150,
+      child: Swiper(
+        itemCount: 4,
+        itemBuilder: _swiperBuilder,
+        pagination: SwiperPagination(
+            alignment: Alignment.bottomRight,
+            // margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
+            builder: DotSwiperPaginationBuilder(
+                color: Colors.black54,
+                activeColor: Colors.white
+            )
+        ),
+        controller: SwiperController(),
+        scrollDirection: Axis.horizontal,
+        autoplay: true,
+        onTap: (index) =&gt; print('点击了第$index'),
+      ),
+    );
+  }
+
+  Widget _swiperBuilder(BuildContext context, int index){
+    return (imageList[index]);
+  }
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://losetime.github.io/mobile/" class="tag">
+                    移动端
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://losetime.github.io/flutter-tong-yong-mo-kuai/">
+                  <h3 class="post-title">
+                    Flutter 通用模块
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
 </script>
 
-    </div>
-</div>
-</body>
+
+
+
+  </body>
 </html>
