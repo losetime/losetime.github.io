@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://losetime.github.io</id>
     <title>losetime</title>
-    <updated>2021-04-03T13:42:59.644Z</updated>
+    <updated>2021-04-08T02:21:15.170Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://losetime.github.io"/>
     <link rel="self" href="https://losetime.github.io/atom.xml"/>
@@ -11,12 +11,13 @@
     <icon>https://losetime.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, losetime</rights>
     <entry>
-        <title type="html"><![CDATA[快速排序]]></title>
+        <title type="html"><![CDATA[排序算法]]></title>
         <id>https://losetime.github.io/kuai-su-pai-xu/</id>
         <link href="https://losetime.github.io/kuai-su-pai-xu/">
         </link>
         <updated>2021-04-02T14:06:01.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617375144226.png" alt="" loading="lazy"></figure>
+        <content type="html"><![CDATA[<h2 id="1-快速排序">1. 快速排序</h2>
+<figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617375144226.png" alt="" loading="lazy"></figure>
 <pre><code>function quickSort(arr, l, r){
   if(l&gt;=r) return arr
   let left = l // 左指针!
@@ -42,6 +43,61 @@
 }
 let sortArr = [2,1,4,3,9,12,100,201,29,80,72,92,54,32,23]
 console.log(quickSort(sortArr, 0, sortArr.length-1))
+</code></pre>
+<h2 id="2-归并排序">2. 归并排序</h2>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/7789414-2737ec30a70ff74f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/811/format/webp" alt="" loading="lazy"></figure>
+<pre><code>function mergeSort(arr){
+    if(arr.length &lt;= 1){
+        return arr
+    }
+    let middle = Math.floor(arr.length / 2)
+    let left = arr.slice(0, middle)
+    let right = arr.slice(middle)
+    return merge(mergeSort(left), mergeSort(right))
+}
+function merge(left, right){
+    let result = []
+    while(left.length &gt; 0 &amp;&amp; right.length &gt; 0){
+        if(left[0]&lt;right[0]){
+        result.push(left.shift())
+        }else {
+        result.push(right.shift())
+        }
+    }
+    return result.concat(left).concat(right)
+}
+</code></pre>
+<h2 id="3-计数排序">3. 计数排序</h2>
+<ul>
+<li><strong>主要思想</strong></li>
+</ul>
+<ol>
+<li>通过定义一个目标数组内最大值和最小值区间长度的新数组</li>
+<li>把目标数组的值分别放入该数组对应的下标</li>
+<li>每次该数组下标对应的值要加1</li>
+<li>最后就会形成下面这样一个数组<br>
+<img src="https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGroCH0m1FU64Lsj1SVicZJ1pSiceib25REaIym1v2xlB8y6Pm9OSvjZ2JXbVQwU1JibeibtEFCOO6icpZpw/640?wx_fmt=png" alt="" loading="lazy"></li>
+<li>这个数组已经是排好序的，我们通过循环取出下标，下标所对应的值则是该下标出现的次数</li>
+</ol>
+<ul>
+<li><strong>注意</strong></li>
+</ul>
+<ol>
+<li>计数排序是唯一一种时间复杂度可以达到O(n)的排序算法</li>
+</ol>
+<pre><code>function countSort(arr){
+    let maxNum = Math.max(...arr)
+    let minNum = Math.min(...arr)
+    let counter = new Array(maxNum - minNum + 1).fill(0)
+    let result = []
+    for(let i=0;i&lt;arr.length;i++){
+        counter[arr[i]] = counter[arr[i]]+1
+    }
+    for(let i=0;i&lt;counter.length;i++){
+        result = result.concat(new Array(counter[i]).fill(i))
+    }
+    return result
+}
 </code></pre>
 ]]></content>
     </entry>

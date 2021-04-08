@@ -1,309 +1,326 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>losetime</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617848153686">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617455421388">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://losetime.github.io">
+  <img class="avatar" src="https://losetime.github.io/images/avatar.png?v=1617848153686" alt="">
+  </a>
+  <h1 class="site-title">
+    losetime
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://losetime.github.io">
-        <img src="https://losetime.github.io/images/avatar.png?v=1617455421388" class="site-logo">
-        <h1 class="site-title">losetime</h1>
+    
+        <div class="post-container">
+  
+    <article class="post">
+      <a href="https://losetime.github.io/kuai-su-pai-xu/">
+        <h2 class="post-title">排序算法</h2>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
+      <div class="post-info">
+        <time class="post-time">
+          · 2021-04-02 ·
+        </time>
+        
+          <a href="https://losetime.github.io/algorithm/" class="post-tag">
+            # 算法
+          </a>
+        
       </div>
-    </div>
-    <div>
       
+      <div class="post-abstract">
         
-          <a href="/" class="site-nav">
-            首页
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/">
+        <h2 class="post-title">实现一个任务队列</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-07-16 ·
+        </time>
+        
+      </div>
+      
+      <div class="post-abstract">
+        
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/vue-cli-plugin-electron-builder-bi-ji/">
+        <h2 class="post-title">Vue CLI Plugin Electron Builder笔记</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-07-11 ·
+        </time>
+        
+      </div>
+      
+      <div class="post-abstract">
+        
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/er-cha-shu-suan-fa-yuan-li/">
+        <h2 class="post-title">二叉树算法原理</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-20 ·
+        </time>
+        
+          <a href="https://losetime.github.io/algorithm/" class="post-tag">
+            # 算法
           </a>
         
+      </div>
       
+      <div class="post-abstract">
         
-          <a href="/archives" class="site-nav">
-            归档
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/jenkins-pei-zhi-you-jian-tong-zhi/">
+        <h2 class="post-title">Jenkins配置邮件通知</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-19 ·
+        </time>
+        
+          <a href="https://losetime.github.io/engine/" class="post-tag">
+            # 前端工程化
           </a>
         
+      </div>
       
+      <div class="post-abstract">
         
-          <a href="/tags" class="site-nav">
-            标签
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/">
+        <h2 class="post-title">Jenkins的在Liunx系统上的权限问题</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-19 ·
+        </time>
+        
+          <a href="https://losetime.github.io/engine/" class="post-tag">
+            # 前端工程化
           </a>
         
+      </div>
       
+      <div class="post-abstract">
         
-          <a href="/post/about" class="site-nav">
-            关于
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/a-li-yun-centos-pei-zhi-jenkins/">
+        <h2 class="post-title">阿里云CentOS配置Jenkins</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-19 ·
+        </time>
+        
+          <a href="https://losetime.github.io/engine/" class="post-tag">
+            # 前端工程化
           </a>
         
+      </div>
       
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+      <div class="post-abstract">
         
-          <a class="social-link" href="https://github.com/losetime" target="_blank">
-            <i class="fab fa-github"></i>
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/centos-an-zhuang-nodejs/">
+        <h2 class="post-title">CentOS安装Node.js</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-19 ·
+        </time>
+        
+          <a href="https://losetime.github.io/engine/" class="post-tag">
+            # 前端工程化
           </a>
         
+      </div>
       
+      <div class="post-abstract">
         
-      
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/">
+        <h2 class="post-title">阿里云CentOS配置Nigux</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-18 ·
+        </time>
         
-      
+          <a href="https://losetime.github.io/engine/" class="post-tag">
+            # 前端工程化
+          </a>
         
+      </div>
       
+      <div class="post-abstract">
         
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/flutter-da-bao-he-ge-xing-hua-xiu-gai/">
+        <h2 class="post-title">Flutter打包和个性化修改</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-08 ·
+        </time>
+        
+          <a href="https://losetime.github.io/mobile/" class="post-tag">
+            # 移动端
+          </a>
+        
+      </div>
       
-    </div>
-    <div class="site-description">
-      温故而知新
-    </div>
-    <div class="site-footer">
-      wwp.personal@gmail.com
-    </div>
-  </div>
+      <div class="post-abstract">
+        
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/flutter_swiper-zu-jian-de-shi-yong/">
+        <h2 class="post-title">Flutter_Swiper组件的使用</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-08 ·
+        </time>
+        
+          <a href="https://losetime.github.io/mobile/" class="post-tag">
+            # 移动端
+          </a>
+        
+      </div>
+      
+      <div class="post-abstract">
+        
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://losetime.github.io/flutter-tong-yong-mo-kuai/">
+        <h2 class="post-title">Flutter 通用模块</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2019-04-07 ·
+        </time>
+        
+          <a href="https://losetime.github.io/mobile/" class="post-tag">
+            # 移动端
+          </a>
+        
+      </div>
+      
+      <div class="post-abstract">
+        
+      </di>
+    </article>
+  
 </div>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/kuai-su-pai-xu/">
-                  <h2 class="post-title">快速排序</h2>
-                </a>
-                <div class="post-date">
-                  2021-04-02
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/">
-                  <h2 class="post-title">实现一个任务队列</h2>
-                </a>
-                <div class="post-date">
-                  2019-07-16
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/vue-cli-plugin-electron-builder-bi-ji/">
-                  <h2 class="post-title">Vue CLI Plugin Electron Builder笔记</h2>
-                </a>
-                <div class="post-date">
-                  2019-07-11
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/er-cha-shu-suan-fa-yuan-li/">
-                  <h2 class="post-title">二叉树算法原理</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/jenkins-pei-zhi-you-jian-tong-zhi/">
-                  <h2 class="post-title">Jenkins配置邮件通知</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/jenkins-de-zai-liunx-xi-tong-shang-de-quan-xian-wen-ti/">
-                  <h2 class="post-title">Jenkins的在Liunx系统上的权限问题</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/a-li-yun-centos-pei-zhi-jenkins/">
-                  <h2 class="post-title">阿里云CentOS配置Jenkins</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/centos-an-zhuang-nodejs/">
-                  <h2 class="post-title">CentOS安装Node.js</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/">
-                  <h2 class="post-title">阿里云CentOS配置Nigux</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/flutter-da-bao-he-ge-xing-hua-xiu-gai/">
-                  <h2 class="post-title">Flutter打包和个性化修改</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-08
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/flutter_swiper-zu-jian-de-shi-yong/">
-                  <h2 class="post-title">Flutter_Swiper组件的使用</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-08
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://losetime.github.io/flutter-tong-yong-mo-kuai/">
-                  <h2 class="post-title">Flutter 通用模块</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-07
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-
-          <div class="pagination-container">
+    
+        <div class="pagination-container">
   
   
 </div>
 
-        </div>
-      </div>
-    </div>
+    
+        <div class="site-footer">
+  wwp.personal@gmail.com
+</div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>

@@ -1,105 +1,93 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
-<title>快速排序 | losetime</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>排序算法 | losetime</title>
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617848153686">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617455421388">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://losetime.github.io">
-        <img src="https://losetime.github.io/images/avatar.png?v=1617455421388" class="site-logo">
-        <h1 class="site-title">losetime</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://losetime.github.io">
+  <img class="avatar" src="https://losetime.github.io/images/avatar.png?v=1617848153686" alt="">
+  </a>
+  <h1 class="site-title">
+    losetime
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
       
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
+        <a href="/" class="menu">
+          首页
+        </a>
       
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
+    
       
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
+        <a href="/archives" class="menu">
+          归档
+        </a>
       
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
+    
       
-    </div>
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
+  <div class="social-container">
+    
       
-        
-          <a class="social-link" href="https://github.com/losetime" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
-      
-    </div>
-    <div class="site-description">
-      温故而知新
-    </div>
-    <div class="site-footer">
-      wwp.personal@gmail.com
-    </div>
+    
   </div>
 </div>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">快速排序</h2>
-            <div class="post-date">2021-04-02</div>
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              排序算法
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2021-04-02 ·
+              </time>
+              
+                <a href="https://losetime.github.io/algorithm/" class="post-tags">
+                  # 算法
+                </a>
+              
+            </div>
             
             <div class="post-content">
-              <figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617375144226.png" alt="" loading="lazy"></figure>
+              <h2 id="1-快速排序">1. 快速排序</h2>
+<figure data-type="image" tabindex="1"><img src="https://losetime.github.io/post-images/1617375144226.png" alt="" loading="lazy"></figure>
 <pre><code>function quickSort(arr, l, r){
   if(l&gt;=r) return arr
   let left = l // 左指针!
@@ -126,55 +114,88 @@
 let sortArr = [2,1,4,3,9,12,100,201,29,80,72,92,54,32,23]
 console.log(quickSort(sortArr, 0, sortArr.length-1))
 </code></pre>
+<h2 id="2-归并排序">2. 归并排序</h2>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/7789414-2737ec30a70ff74f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/811/format/webp" alt="" loading="lazy"></figure>
+<pre><code>function mergeSort(arr){
+    if(arr.length &lt;= 1){
+        return arr
+    }
+    let middle = Math.floor(arr.length / 2)
+    let left = arr.slice(0, middle)
+    let right = arr.slice(middle)
+    return merge(mergeSort(left), mergeSort(right))
+}
+function merge(left, right){
+    let result = []
+    while(left.length &gt; 0 &amp;&amp; right.length &gt; 0){
+        if(left[0]&lt;right[0]){
+        result.push(left.shift())
+        }else {
+        result.push(right.shift())
+        }
+    }
+    return result.concat(left).concat(right)
+}
+</code></pre>
+<h2 id="3-计数排序">3. 计数排序</h2>
+<ul>
+<li><strong>主要思想</strong></li>
+</ul>
+<ol>
+<li>通过定义一个目标数组内最大值和最小值区间长度的新数组</li>
+<li>把目标数组的值分别放入该数组对应的下标</li>
+<li>每次该数组下标对应的值要加1</li>
+<li>最后就会形成下面这样一个数组<br>
+<img src="https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_png/NtO5sialJZGroCH0m1FU64Lsj1SVicZJ1pSiceib25REaIym1v2xlB8y6Pm9OSvjZ2JXbVQwU1JibeibtEFCOO6icpZpw/640?wx_fmt=png" alt="" loading="lazy"></li>
+<li>这个数组已经是排好序的，我们通过循环取出下标，下标所对应的值则是该下标出现的次数</li>
+</ol>
+<ul>
+<li><strong>注意</strong></li>
+</ul>
+<ol>
+<li>计数排序是唯一一种时间复杂度可以达到O(n)的排序算法</li>
+</ol>
+<pre><code>function countSort(arr){
+    let maxNum = Math.max(...arr)
+    let minNum = Math.min(...arr)
+    let counter = new Array(maxNum - minNum + 1).fill(0)
+    let result = []
+    for(let i=0;i&lt;arr.length;i++){
+        counter[arr[i]] = counter[arr[i]]+1
+    }
+    for(let i=0;i&lt;counter.length;i++){
+        result = result.concat(new Array(counter[i]).fill(i))
+    }
+    return result
+}
+</code></pre>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://losetime.github.io/algorithm/" class="tag">
-                    算法
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/">
-                  <h3 class="post-title">
-                    实现一个任务队列
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
+          </article>
         </div>
-      </div>
-    </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://losetime.github.io/shi-xian-yi-ge-ren-wu-dui-lie/">
+              <h3 class="post-title">
+                实现一个任务队列
+              </h3>
+            </a>
+          </div>  
+        
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        
+    
+        <div class="site-footer">
+  wwp.personal@gmail.com
+</div>
 
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>
