@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://losetime.github.io</id>
     <title>losetime</title>
-    <updated>2021-04-08T04:00:18.782Z</updated>
+    <updated>2021-04-08T06:41:21.803Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://losetime.github.io"/>
     <link rel="self" href="https://losetime.github.io/atom.xml"/>
@@ -35,21 +35,21 @@
 <li>
 <h3 id="代码实现"><strong>代码实现</strong></h3>
 <pre><code>function Event(){
-    let handles = {}
-    this.on = function(evName, callback){
-        if(!handles[evName]){
-            handles[evName] = []
-        }
-        handles[evName].push(callback)
+  this.handles = {}
+}
+Event.prototype.on = function(evName, callback){
+  if(!this.handles[evName]){
+    this.handles[evName] = []
+  }
+  this.handles[evName].push(callback)
+}
+Event.prototype.emit = function(evName, ...args){
+  const handle = this.handles[evName]
+  if(handle){
+    for(let i=0,len=handle.length;i&lt;len;i++){
+      handle[i](...args)
     }
-    this.emit = function(evName, ...args){
-        const handle = handles[evName]
-        if(handle){
-            for(let i=0,len=handle.length;i&lt;len;i++){
-                handle[i](...args)
-            }
-        }
-    }
+  }
 }
 let event = new Event()
 event.on('step', (...args)=&gt;{console.log(...args)})
@@ -57,7 +57,6 @@ event.emit('step', 10, 'huahua')
 event.emit('step', 20, 'xiaoming')
 
 function Child(){}
-// 子类继承
 Child.prototype = new Event()
 let child = new Child()
 child.on('step', (...args)=&gt;{console.log(...args)})

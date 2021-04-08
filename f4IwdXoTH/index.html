@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>实现一个简易的EventEmiter | losetime</title>
-<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617854408591">
+<link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617864078712">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://losetime.github.io">
-  <img class="avatar" src="https://losetime.github.io/images/avatar.png?v=1617854408591" alt="">
+  <img class="avatar" src="https://losetime.github.io/images/avatar.png?v=1617864078712" alt="">
   </a>
   <h1 class="site-title">
     losetime
@@ -101,21 +101,21 @@
 <li>
 <h3 id="代码实现"><strong>代码实现</strong></h3>
 <pre><code>function Event(){
-    let handles = {}
-    this.on = function(evName, callback){
-        if(!handles[evName]){
-            handles[evName] = []
-        }
-        handles[evName].push(callback)
+  this.handles = {}
+}
+Event.prototype.on = function(evName, callback){
+  if(!this.handles[evName]){
+    this.handles[evName] = []
+  }
+  this.handles[evName].push(callback)
+}
+Event.prototype.emit = function(evName, ...args){
+  const handle = this.handles[evName]
+  if(handle){
+    for(let i=0,len=handle.length;i&lt;len;i++){
+      handle[i](...args)
     }
-    this.emit = function(evName, ...args){
-        const handle = handles[evName]
-        if(handle){
-            for(let i=0,len=handle.length;i&lt;len;i++){
-                handle[i](...args)
-            }
-        }
-    }
+  }
 }
 let event = new Event()
 event.on('step', (...args)=&gt;{console.log(...args)})
@@ -123,7 +123,6 @@ event.emit('step', 10, 'huahua')
 event.emit('step', 20, 'xiaoming')
 
 function Child(){}
-// 子类继承
 Child.prototype = new Event()
 let child = new Child()
 child.on('step', (...args)=&gt;{console.log(...args)})
