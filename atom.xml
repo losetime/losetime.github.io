@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://losetime.github.io</id>
     <title>losetime</title>
-    <updated>2021-04-08T06:41:21.803Z</updated>
+    <updated>2021-04-08T07:48:48.408Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://losetime.github.io"/>
     <link rel="self" href="https://losetime.github.io/atom.xml"/>
@@ -10,6 +10,78 @@
     <logo>https://losetime.github.io/images/avatar.png</logo>
     <icon>https://losetime.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, losetime</rights>
+    <entry>
+        <title type="html"><![CDATA[工厂模式]]></title>
+        <id>https://losetime.github.io/JaZg9Vp1b/</id>
+        <link href="https://losetime.github.io/JaZg9Vp1b/">
+        </link>
+        <updated>2021-04-08T07:39:17.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h3 id="思路">💡<strong>思路</strong></h3>
+<ol>
+<li>创建需要批量的构造函数</li>
+<li>通过工厂中间函数，根据一些固定的输入模式，返回相应的输出</li>
+</ol>
+</li>
+<li>
+<h3 id="实现">🔨<strong>实现</strong></h3>
+<pre><code>function Student(name, subjects){
+    this.name = name
+    this.subjects = subjects
+}
+function factory(name, type){
+    switch(type){
+        case '文科':
+        return new Student(name, ['历史','政治','地理'])
+        break
+        case '理科':
+        return new Student(name, ['物理','化学','生物'])
+        default:
+        throw &quot;找不到该专业&quot;
+    }
+}
+let zs = factory('张三','文科')
+let ls = factory('李四','理科')
+console.log(zs)
+console.log(ls)
+</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[单例模式]]></title>
+        <id>https://losetime.github.io/C3YhUQ-e1/</id>
+        <link href="https://losetime.github.io/C3YhUQ-e1/">
+        </link>
+        <updated>2021-04-08T07:10:28.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h3 id="思路">💡<strong>思路</strong></h3>
+<ol>
+<li>单例模式其实就是把实例对象保存在了构造函数的一个属性里，每次实例化时判断该属性是否存在</li>
+<li>如果存在直接返回</li>
+<li>如果不存在，则创建</li>
+</ol>
+</li>
+<li>
+<h3 id="实现">🔨<strong>实现</strong></h3>
+<pre><code>function Resource(){
+    if(Resource.instance){
+        return Resource.instance
+    } else {
+        this.balance = 100
+        Resource.instance = this
+    }
+}
+let r = new Resource()
+console.log(r)
+</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[实现一个简易的EventEmiter]]></title>
         <id>https://losetime.github.io/f4IwdXoTH/</id>
@@ -652,139 +724,6 @@ tar -zxvf dist.tar.gz #解压dist文件到当前文件夹
 rm -rf dist.tar.gz #删除dist文件
 </code></pre>
 <p>应用，保存，ok。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CentOS安装Node.js]]></title>
-        <id>https://losetime.github.io/centos-an-zhuang-nodejs/</id>
-        <link href="https://losetime.github.io/centos-an-zhuang-nodejs/">
-        </link>
-        <updated>2019-04-19T08:36:04.000Z</updated>
-        <content type="html"><![CDATA[<p>Yum 自带 Node版本，但是版本太老了，是V6版本的，所以我们需要重新安装。</p>
-<ol>
-<li>二进制安装方法，右击复制二进制文件链接地址<br>
-<img src="https://losetime.github.io/post-images/1555663662014.png" alt="" loading="lazy"></li>
-<li>使用wget下载压缩文件，使用tar命令解压</li>
-</ol>
-<pre><code>wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz（文件在root文件夹下）
-tar -xvf v10.15.3/node-v10.15.3-linux-x64.tar.xz （解压，也在root文件夹下面）
-</code></pre>
-<ol start="3">
-<li>配置环境变量</li>
-</ol>
-<ul>
-<li>第一种方法</li>
-</ul>
-<pre><code>vim ~/.bashrc   //打开文件
-export PATH=/root/node-v10.15.3-linux-x64/bin:$PATH  //添加PATH路径
-source ~/.bashrc  //刷新文件
-</code></pre>
-<ul>
-<li>第二种方法（添加软连接将安装目录链接到全局）</li>
-</ul>
-<pre><code>ln -s /root/node-v9.8.0-linux-x64/bin/node /usr/local/bin/node  
-ln -s /root/node-v9.8.0-linux-x64/bin/npm /usr/local/bin/npm  
-ln -s /root/node-v9.8.0-linux-x64/bin/npx /usr/local/bin/npx
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[阿里云CentOS配置Nigux]]></title>
-        <id>https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/</id>
-        <link href="https://losetime.github.io/a-li-yun-centos-pei-zhi-nigux/">
-        </link>
-        <updated>2019-04-18T05:43:08.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>CentOS自带yum源，所以可以直接使用</li>
-<li>安装</li>
-</ol>
-<pre><code>sudo yum install -y nginx
-</code></pre>
-<ol start="3">
-<li>默认安装目录： /usr/share/nginx/</li>
-<li>启动</li>
-</ol>
-<pre><code>sudo stystemctl start nginx.service
-</code></pre>
-<ol start="5">
-<li>开机启动</li>
-</ol>
-<pre><code>sudo systemctl enable nginx.service
-</code></pre>
-<ol start="6">
-<li>网站文件存放默认目录</li>
-</ol>
-<pre><code>/usr/share/nginx/html
-</code></pre>
-<ol start="7">
-<li>站默认站点配置</li>
-</ol>
-<pre><code>/etc/nginx/conf.d/default.conf
-</code></pre>
-<ol start="8">
-<li>自定义Nginx站点配置文件存放目录</li>
-</ol>
-<pre><code>/etc/nginx/conf.d/
-</code></pre>
-<ol start="9">
-<li>Nginx全局配置</li>
-</ol>
-<pre><code>/etc/nginx/nginx.conf
-</code></pre>
-<ol start="10">
-<li>彻底卸载Nginx（其他软件相同）</li>
-</ol>
-<ul>
-<li>停止Nginx软件<br>
-<code>service nginx stop</code></li>
-<li>删除Nginx的自动启动<br>
-<code>chkconfig nginx off</code></li>
-<li>从源头删除Nginx</li>
-</ul>
-<pre><code>rm -rf /usr/sbin/nginx
-rm -rf /etc/nginx
-rm -rf /etc/init.d/nginx
-</code></pre>
-<ul>
-<li>再使用yum清理<br>
-<code>yum remove nginx</code></li>
-</ul>
-<p>11.安装软件（例如java）</p>
-<pre><code>yum search java|grep jdk
-
-或者： yum list 软件名
-
-yum install java-1.8.0-openjdk
-</code></pre>
-<ol start="12">
-<li>升级所有的软件包</li>
-</ol>
-<pre><code>yum update
-</code></pre>
-<ol start="13">
-<li>升级某一个软件包 ，以升级 tomcat 为例</li>
-</ol>
-<pre><code>yum update tomcat
-</code></pre>
-<ol start="14">
-<li>检查可更新的程序</li>
-</ol>
-<pre><code>yum check-update
-</code></pre>
-<ol start="15">
-<li>查看所有进程</li>
-</ol>
-<pre><code>netstat -nap
-</code></pre>
-<ol start="16">
-<li>杀死进程</li>
-</ol>
-<pre><code>kill PID编号
-</code></pre>
-<ol start="17">
-<li>解决ssh服务器的x11 forwarding报错<br>
-<img src="https://losetime.github.io/post-images/1555566876356.png" alt="" loading="lazy"></li>
-</ol>
 ]]></content>
     </entry>
 </feed>
