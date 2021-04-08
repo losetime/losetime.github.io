@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>实现一个任务队列 | losetime</title>
+<title>实现一个简易的EventEmiter | losetime</title>
 <link rel="shortcut icon" href="https://losetime.github.io/favicon.ico?v=1617854408591">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://losetime.github.io/styles/main.css">
@@ -72,68 +72,66 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              实现一个任务队列
+              实现一个简易的EventEmiter
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-07-16 ·
+                · 2021-04-08 ·
               </time>
               
             </div>
             
             <div class="post-content">
-              <h1 id="1promise实现任务队列">1.promise实现任务队列</h1>
-<ul>
-<li>promise.then如果遇到没有返回值，那么默认就会把undefined包装成promise后返回，然后继续向下执行</li>
-<li>我们在返回值里 返回一个新的promise，那么第一层的promise就会等到这内部的promise执行完毕后才会返回</li>
-<li>而内部的promise什么时候执行完成，就依赖于resolve何时执行，这就达到了任务队列的目的</li>
-</ul>
-<pre><code>1. forEach版本
-
-function taskQueue(arr){
-    let promise = Promise.resolve();
-    arr.forEach(item=&gt;{
-		//这里需要把返回的Promise实例赋给promise，生成新的队列
-        promise = promise.then(()=&gt;{
-            return new Promise(resolve=&gt;{
-                // do...
-                setTimeout(()=&gt;{
-                    console.log(item)
-                    resolve();
-                },2000)
-                
-            })
-        })
-    })
-}
-
-2. reduce版本
-
-function taskQueue(arr){
-    /**
-     * reduce方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终返回一个值
-     * reduce中callback的返回值会作为下一次的初始值
-     reduce参数
-     * callback，回调函数
-     * initialValue，初始传入值值
-     callback参数
-     * 1.previousValue,上一次调用回调返回的值，或者是提供的初始值
-     * 2.currentValue，数组中当前被处理的元素
-     * 3.index,当前元素在数组中的索引
-     * 4.array,reduce调用的数组
-     */
-    arr.reduce((promise,item,index,array)=&gt;{
-        return promise.then(()=&gt;{
-            return new Promise(resolve=&gt;{
-                setTimeout(()=&gt;{
-                    console.log(item)
-                    resolve();
-                },2000)
-            })
-        })
-    },Promise.resolve())
+              <ul>
+<li>
+<h3 id="思路梳理"><strong>思路梳理</strong></h3>
+<ol>
+<li>首先要有一个对象，存储触发事件，大概长下面这个样子</li>
+</ol>
+<pre><code>let handles = {
+    event1: [] // 数组里存放的是回调函数
+    event2: []
 }
 </code></pre>
+<ol start="2">
+<li>在监听阶段，我们需要把所有的触发事件收集起来</li>
+<li>在触发阶段，则把所有的存在handles里的事件拿出来分别执行</li>
+</ol>
+</li>
+<li>
+<h3 id="代码实现"><strong>代码实现</strong></h3>
+<pre><code>function Event(){
+    let handles = {}
+    this.on = function(evName, callback){
+        if(!handles[evName]){
+            handles[evName] = []
+        }
+        handles[evName].push(callback)
+    }
+    this.emit = function(evName, ...args){
+        const handle = handles[evName]
+        if(handle){
+            for(let i=0,len=handle.length;i&lt;len;i++){
+                handle[i](...args)
+            }
+        }
+    }
+}
+let event = new Event()
+event.on('step', (...args)=&gt;{console.log(...args)})
+event.emit('step', 10, 'huahua')
+event.emit('step', 20, 'xiaoming')
+
+function Child(){}
+// 子类继承
+Child.prototype = new Event()
+let child = new Child()
+child.on('step', (...args)=&gt;{console.log(...args)})
+child.emit('step', 30, '二狗子')
+child.emit('step', 90, '法外狂徒张三')
+</code></pre>
+</li>
+</ul>
 
             </div>
           </article>
@@ -142,9 +140,9 @@ function taskQueue(arr){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://losetime.github.io/vue-cli-plugin-electron-builder-bi-ji/">
+            <a href="https://losetime.github.io/kuai-su-pai-xu/">
               <h3 class="post-title">
-                Vue CLI Plugin Electron Builder笔记
+                排序算法
               </h3>
             </a>
           </div>  
